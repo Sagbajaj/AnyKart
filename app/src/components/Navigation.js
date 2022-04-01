@@ -66,7 +66,7 @@ selectcategory(id, name) {
             window.localStorage.getItem("user_role") !== 'SUPPLIER' &&
             <a href="/home">
             <a className="navbar-brand">
-            <img src={logo} class="img-fluid" alt="Logo" width="50px" height="50px"/>
+            <img src={logo} class="img-fluid" alt="Logo" width="100px" height="50px"/>
             </a>
           </a>
           }
@@ -74,7 +74,7 @@ selectcategory(id, name) {
           { window.localStorage.getItem("user_role") == 'DELIVERY_BOY' &&
             <Link to="/deliveryboyhome">
             <a className="navbar-brand">
-            <img src={logo} class="img-fluid" alt="Logo" width="50px" height="50px"/>
+            <img src={logo} class="img-fluid" alt="Logo" width="100px" height="50px"/>
             </a>
           </Link>
           }
@@ -82,7 +82,7 @@ selectcategory(id, name) {
           { window.localStorage.getItem("user_role") == 'ADMIN' &&
             <Link to="/home">
             <a className="navbar-brand">
-            <img src={logo} class="img-fluid" alt="Logo" width="50px" height="50px"/>
+            <img src={logo} class="img-fluid" alt="Logo" width="100px" height="50px"/>
             </a>
           </Link>
           }
@@ -90,7 +90,7 @@ selectcategory(id, name) {
         { window.localStorage.getItem("user_role") == 'SUPPLIER' &&
             <Link to="/supplierhome">
             <a className="navbar-brand">
-            <img src={logo} class="img-fluid" alt="Logo" width="50px" height="50px"/>
+            <img src={logo} class="img-fluid" alt="Logo" width="100px" height="50px"/>
             </a>
           </Link>
           }
