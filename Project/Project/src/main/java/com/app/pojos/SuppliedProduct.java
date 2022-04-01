@@ -14,9 +14,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "Supplied_Products")
 public class SuppliedProduct extends BaseEntity{
-	@Column(length = 20)
-	private String productName;
 	@Column(length = 100)
+	private String productName;
+	@Column(length = 200)
 	private String description;
 	private int rating;
 	private double price;

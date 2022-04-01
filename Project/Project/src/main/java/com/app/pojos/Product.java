@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Product extends BaseEntity{
 	@Column(length = 100)
 	private String productName;
-	@Column(length = 100)
+	@Column(length = 200)
 	private String description;
 	private int rating;
 	private double price;
