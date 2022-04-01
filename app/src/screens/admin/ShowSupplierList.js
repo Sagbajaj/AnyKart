@@ -69,7 +69,7 @@ class SupplierListScreen extends Component{
                                 <td><Link to={"/supplier/showproductsbysupplier/"+supplier.id} className="btn btn-success">Check Products</Link></td>
                                 <td><Link to={"/addproductfromsupplier/"+supplier.id} className="btn btn-success">Check Available Products</Link></td>
                                 <td><Link to={"/supplieraddress/"+supplier.id} className="btn btn-success">Address</Link></td>
-                                <td><button className="btn4 btn-danger" onClick={() => this.deleteSupplier(supplier.id)}>Delete Supplier</button></td>
+                               
                             </tr>
                     )
                 }
