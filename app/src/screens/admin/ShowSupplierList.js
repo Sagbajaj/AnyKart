@@ -69,7 +69,6 @@ class SupplierListScreen extends Component{
                                 <td><Link to={"/supplier/showproductsbysupplier/"+supplier.id} className="btn btn-success">Check Products</Link></td>
                                 <td><Link to={"/addproductfromsupplier/"+supplier.id} className="btn btn-success">Check Available Products</Link></td>
                                 <td><Link to={"/supplieraddress/"+supplier.id} className="btn btn-success">Address</Link></td>
-                               
                             </tr>
                     )
                 }
