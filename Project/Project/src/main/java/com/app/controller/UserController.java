@@ -65,16 +65,27 @@ public class UserController {
 		}
 	}
 	
-	@DeleteMapping("/{categoryName}")
-	public ResponseDTO<?> deleteSupplierAccount(@PathVariable int categoryName){
-		System.out.println("in deleteSupplierAccount: "+categoryName);
+	@DeleteMapping("/{id}")
+	public ResponseDTO<?> deleteSupplierAccount(@PathVariable int id){
+		System.out.println("in deleteSupplierAccount: "+id);
 		try {		
-			return new ResponseDTO<>(HttpStatus.OK, "User deleted", userService.deleteSupplierAccount(categoryName));
+			return new ResponseDTO<>(HttpStatus.OK, "User deleted", userService.deleteSupplierAccount(id));
 		}catch (RuntimeException e) {
 			System.out.println("err in addSupplierAccount : "+e);
 			return new ResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR, "User Not deleted", null);
 		}
 	}
+	
+	@DeleteMapping("/delBoy/{id}")
+	public ResponseDTO<?> deleteDelBoy(@PathVariable int id){
+		System.out.println("in deleteDelBoyMethod: "+id);
+		try {		
+			return new ResponseDTO<>(HttpStatus.OK, "User deleted", userService.deleteDelBoy(id));
+		}catch (RuntimeException e) {
+			System.out.println("err in addSupplierAccount : "+e);
+			return new ResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR, "User Not deleted", null);
+		}
+	}	
 	
 	@PutMapping("/edit-profile/{userId}")
 	public ResponseDTO<?> editProfile(@PathVariable int userId,@RequestBody UserDTO userDTO){

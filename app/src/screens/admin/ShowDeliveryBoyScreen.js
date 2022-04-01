@@ -30,6 +30,14 @@ class DeliveryBoyListScreen extends Component{
     addDeliveryBoy() {
         this.props.history.push('/adddeliveryboy');
     }
+    
+    deleteDelBoy(id){
+        ApiCustomerService.deleteDelBoy(id)
+        .then((res) => {
+           window.location.reload();
+        });
+    }
+
 
     render() {
     return (
@@ -55,6 +63,7 @@ class DeliveryBoyListScreen extends Component{
                                 <td>{boy.lastName}</td>
                                 <td>{boy.email}</td>
                                 <td >{boy.phone}</td>
+                                <td><button className="btn btn-danger" onClick={() => this.deleteDelBoy(boy.id)}>Delete</button></td>
                             </tr>
                     )
                 }

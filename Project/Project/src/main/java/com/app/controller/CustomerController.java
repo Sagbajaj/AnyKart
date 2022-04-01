@@ -269,10 +269,10 @@ public class CustomerController {
 			 List<Category> list = custService.getAllCategoryList();
 			 System.out.println("Category list : "+list);
 			return new ResponseDTO<>(HttpStatus.OK, "Category List added",list);
-		}catch (RuntimeException e) {
+	}catch (RuntimeException e) {
 			System.out.println("err in getAllCategoryList");
-			return new ResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR, "Category List Not added", null);
-		}
+	return new ResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR, "Category List Not added", null);
+	}
 	}
 	
 	@GetMapping("/homeproductlist")

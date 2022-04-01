@@ -10,6 +10,7 @@ class HomeScreen extends Component {
 
     constructor(props) {
         super(props)
+        console.log("HomeScreen constructor");
         this.state = {
             category:[],
             products: [],
@@ -28,13 +29,11 @@ class HomeScreen extends Component {
             JSON.stringify(window.localStorage.setItem("cart_size", 0) );
         if(size !== null)
         JSON.stringify(window.localStorage.setItem("cart_size", size) );
-
         let uId = JSON.parse(window.localStorage.getItem("user_id"))
         if(uId === null)
             JSON.stringify(window.localStorage.setItem("user_id", 9999));
         if(uId !== null)
         JSON.stringify(window.localStorage.setItem("user_id", uId));
-        
         this.reloadCategoryList();
         this.reloadProductsList();
     }

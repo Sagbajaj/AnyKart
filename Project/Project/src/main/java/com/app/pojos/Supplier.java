@@ -1,5 +1,6 @@
 package com.app.pojos;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -8,11 +9,11 @@ import javax.persistence.OneToOne;
 @Entity
 public class Supplier extends BaseEntity{
 
-	@OneToOne(fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "user_id")
 	private User currentUser;
 	
-	@OneToOne(fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "category_id")
 	private Category supplierCategory;
 	

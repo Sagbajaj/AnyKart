@@ -16,8 +16,12 @@ class ApiCustomerService {
     }
 
     
-    deleteSupplier(categoryName){
-        return axios.delete(USER_API_BASE_URL +categoryName);
+    deleteSupplier(userId){
+        return axios.delete(USER_API_BASE_URL +'/'+ userId);
+    }
+
+    deleteDelBoy(userId){
+        return axios.delete(USER_API_BASE_URL +'/delBoy/'+ userId);
     }
     //Edit Profile
     //return user object

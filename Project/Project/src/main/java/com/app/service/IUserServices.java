@@ -26,7 +26,8 @@ public interface IUserServices {
 	
 	int addSupplierAccount(String categoryName, User user);//admin methods
 	
-	String deleteSupplierAccount(int categoryId);
+	String deleteSupplierAccount(int id);
+	String deleteDelBoy(int id);
 	Address getAddressDetails(int orderId); //admin methods
 	
 	User getUserDetails(int cId);//admin methods

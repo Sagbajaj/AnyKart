@@ -8,6 +8,7 @@ import ApiCustomerService from "../../services/customer/ApiCustomerService";
 class SupplierListScreen extends Component{
 
     constructor(props) {
+        console.log("SupplierListScreen constructor");
         super(props)
         this.state = {
           suppliers:[],
@@ -24,6 +25,8 @@ class SupplierListScreen extends Component{
     getSupplierList() {
         ApiCustomerService.fetchSupplierList()
         .then((res) => {
+            console.log("Sagar");
+            console.log(res.data);
             this.setState({suppliers: res.data.result})
         });
     }
@@ -32,8 +35,8 @@ class SupplierListScreen extends Component{
         this.props.history.push('/addSupplier');
     }
 
-    deleteSupplier(supplierId){
-        ApiCustomerService.deleteSupplier(supplierId)
+    deleteSupplier(id){
+        ApiCustomerService.deleteSupplier(id)
         .then((res) => {
            window.location.reload();
         });
@@ -58,7 +61,7 @@ class SupplierListScreen extends Component{
                 </tr>
             </thead>
             <tbody>
-                <div className="container"><h5 className="nameColor1">{this.state.suppliers.length == 0 && this.state.message}</h5></div>
+                <div className="container"><h5 className="nameColor1">{this.state.suppliers.length === 0 && this.state.message}</h5></div>
                 {this.state.suppliers.map(
                         supplier =>
                         <tr key={supplier.id}>

@@ -124,9 +124,15 @@ public class UserServiceImpl implements IUserServices {
 	}
 	
 	@Override
-	public String deleteSupplierAccount(int categoryName) {
-		supRepo.deleteById(categoryName);
+	public String deleteSupplierAccount(int id) {
+		userRepo.deleteById(id);
 		return "Supplier removed";
+	}
+
+	@Override
+	public String deleteDelBoy(int id) {
+		userRepo.deleteById(id);
+		return "Delivery Boy Removed";
 	}
 
 	@Override
