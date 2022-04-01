@@ -1,8 +1,10 @@
+CREATE DATABASE  IF NOT EXISTS `project` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `project`;
 -- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: project
+-- Host: localhost    Database: project
 -- ------------------------------------------------------
--- Server version	8.0.19
+-- Server version	8.0.28
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -350,7 +352,7 @@ CREATE TABLE `users` (
   `role` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_6dotkott2kjsp8vw4d0m25fb7` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -359,7 +361,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'sagar@gmail.com','Sagar','Bajaj','1111','8888888888','ADMIN'),(2,'rohit@gmail.com','Rohit','Ombale','1111','8888888888','ADMIN'),(3,'sup1@gmail.com','Supplier','one','1111','8888888888','SUPPLIER'),(4,'sup2@gmail.com','Supplier','two','1111','8888888888','SUPPLIER'),(5,'sup3@gmail.com','Supplier','three','1111','8888888888','SUPPLIER'),(6,'sup4@gmail.com','Supplier','four','1111','8888888888','SUPPLIER'),(7,'deli1@gmail.com','Delivery','boy1','1111','8888888888','DELIVERY_BOY'),(8,'deli2@gmail.com','Delivery','boy2','1111','8888888888','DELIVERY_BOY'),(9,'cust1@gmail.com','Customer','one','1111','8888888888','CUSTOMER');
+INSERT INTO `users` VALUES (1,'sagar@gmail.com','Sagar','Bajaj','1111','8888888888','ADMIN'),(2,'rohit@gmail.com','Rohit','Ombale','1111','8888888888','ADMIN'),(3,'sup1@gmail.com','Supplier','one','1111','8888888888','SUPPLIER'),(4,'sup2@gmail.com','Supplier','two','1111','8888888888','SUPPLIER'),(5,'sup3@gmail.com','Supplier','three','1111','8888888888','SUPPLIER'),(6,'sup4@gmail.com','Supplier','four','1111','8888888888','SUPPLIER'),(7,'deli1@gmail.com','Delivery','boy1','1111','8888888888','DELIVERY_BOY'),(8,'deli2@gmail.com','Delivery','boy2','1111','8888888888','DELIVERY_BOY'),(9,'cust1@gmail.com','Customer','one','1111','8888888888','CUSTOMER'),(10,'cust2@gmail.com','Customer','two','1111','8888888888','CUSTOMER');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -372,4 +374,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-01 20:28:12
+-- Dump completed on 2022-04-01 20:44:59
