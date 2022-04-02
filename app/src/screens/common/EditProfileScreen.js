@@ -89,7 +89,7 @@ onChange = (e) =>
        </div>
         <div className="mb-3">
           <button className="btn4 btn-success float-end" onClick={this.editUser}>
-            Edit Profile
+            Save Changes
           </button>
           <br></br>
 
