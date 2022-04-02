@@ -26,6 +26,7 @@ class ProductDetailsScreen extends Component {
             productId: this.state.product.id};
         ApiCustomerService.addProductToCart(productCartId)
         .then((res) => {
+            console.log(res.data.result)
             this.setState({message: res.data.result})
         });
         alert("!!! Items Added to Cart !!!");
