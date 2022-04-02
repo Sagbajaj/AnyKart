@@ -3,6 +3,7 @@ import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
 import React, { Component } from 'react'
 import ApiCustomerService from "../../services/customer/ApiCustomerService";
+import Swal from 'sweetalert2';
 class ProductDetailsScreen extends Component {
 
     constructor(props) {
@@ -29,7 +30,13 @@ class ProductDetailsScreen extends Component {
             console.log(res.data.result)
             this.setState({message: res.data.result})
         });
-        alert("!!! Items Added to Cart !!!");
+        //alert("!!! Items Added to Cart !!!");
+        Swal.fire({
+            icon: 'success',
+            title: '!!! Items Added to Cart !!!',
+            showConfirmButton: true,
+            confirmButtonText: 'OKAY',
+          })
         JSON.stringify(window.localStorage.setItem("cart_size", JSON.parse(window.localStorage.getItem("cart_size")) + 1) );  
         this.props.history.push('/product-category');
     }

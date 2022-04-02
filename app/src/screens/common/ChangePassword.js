@@ -4,7 +4,7 @@ import Footer from "../../components/Footer";
 import ApiCustomerService from "../../services/customer/ApiCustomerService";
 import React, { Component } from 'react'
 import Header from "../../components/Header"
-
+import Swal from 'sweetalert2';
 class ChangePasswordScreen extends Component {
 
   constructor(props) {
@@ -31,7 +31,13 @@ onChange = (e) =>
       e.preventDefault();
       ApiCustomerService.editUserPassword(this.state.id, this.state.password)
           .then(res => {
-              alert("Password Changed successfully")
+           //   alert("Password Changed successfully")
+              Swal.fire({
+                icon: 'success',
+                title: 'Password Changed successfully',
+                showConfirmButton: true,
+                confirmButtonText: 'OKAY',
+              })
               window.localStorage.getItem("user_role") == 'CUSTOMER' && this.props.history.push('/home');
               window.localStorage.getItem("user_role") == 'SUPPLIER' && this.props.history.push('/supplierhome');
               window.localStorage.getItem("user_role") == 'DELIVERY_BOY' && this.props.history.push('/deliveryboyhome');

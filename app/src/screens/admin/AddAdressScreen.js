@@ -5,7 +5,7 @@ import ApiCustomerService from "../../services/customer/ApiCustomerService";
 import React, { Component } from 'react'
 import Header from "../../components/Header"
 import ApiSupplierService from '../../services/supplier/ApiSupplierService';
-
+import swal from 'sweetalert2';
 class AddAddressScreen extends Component {
 
   constructor(props) {
@@ -37,7 +37,13 @@ onChange = (e) =>
       ApiSupplierService.addAddress(supplierId, addr)
           .then(res => {
               let message = res.data.result;
-              alert("Supplier Registered Successfully");
+             
+              swal.fire({
+                icon: 'success',
+                title: 'Supplier Registered Successfully',
+                showConfirmButton: true,
+                confirmButtonText: 'OKAY',
+              })
               this.props.history.push('/adminhome');
 
           });

@@ -4,7 +4,7 @@ import Footer from "../../components/Footer";
 import ApiCustomerService from "../../services/customer/ApiCustomerService";
 import React, { Component } from 'react'
 import Header from "../../components/Header"
-
+import Swal from 'sweetalert2';
 class OrderAddressScreen extends Component {
 
   constructor(props) {
@@ -35,7 +35,13 @@ onChange = (e) =>
           .then(res => {
               let id = res.data.result;
               window.localStorage.setItem("address_id", id);
-              alert("Address added successfully")
+            //  alert("Address added successfully")
+              Swal.fire({
+                icon: 'success',
+                title: 'Addreess added successfully',
+                showConfirmButton: true,
+                confirmButtonText: 'OKAY',
+              })
               this.props.history.push('/cart');
           });
   }

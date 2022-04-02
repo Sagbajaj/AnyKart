@@ -4,6 +4,7 @@ import Footer from "../../components/Footer";
 import ApiCustomerService from "../../services/customer/ApiCustomerService";
 import React, { Component } from 'react'
 import Header from "../../components/Header"
+import Swal from 'sweetalert2';
 
 class ChangeAddressScreen extends Component {
 
@@ -50,6 +51,12 @@ onChange = (e) =>
           .then(res => {
               let message = res.data.result;
               alert("Address Update successfully")
+              Swal.fire({
+                icon: 'success',
+                title: 'Addreess Update successfully',
+                showConfirmButton: true,
+                confirmButtonText: 'OKAY',
+              })
               window.localStorage.getItem("user_role") == 'CUSTOMER' && this.props.history.push('/home');
               window.localStorage.getItem("user_role") == 'SUPPLIER' && this.props.history.push('/supplierhome');
 

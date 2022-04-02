@@ -4,7 +4,7 @@ import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
 import { Component } from "react";
 import ApiSupplierService from "../../services/supplier/ApiSupplierService";
-
+import Swal from "sweetalert2";
 export default class AddProductScreen extends Component {
     constructor(props) {
         super(props)
@@ -54,7 +54,13 @@ export default class AddProductScreen extends Component {
 
         ApiSupplierService.addProductBySupplier(this.state.categoryName, product)
             .then(res => {
-                alert("Product Added successfully")
+               // alert("Product Added successfully")
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Product Added successfully',
+                    showConfirmButton: true,
+                    confirmButtonText: 'OKAY',
+                  })
                 this.props.history.push('/supplierhome');
             });
         

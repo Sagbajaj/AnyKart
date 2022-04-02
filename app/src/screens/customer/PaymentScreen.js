@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ApiCustomerService from "../../services/customer/ApiCustomerService";
 import Navigation from "../../components/Navigation";
-
+import Swal from 'sweetalert2';
 
 class PaymentScreen extends Component {
 
@@ -55,7 +55,13 @@ class PaymentScreen extends Component {
 
     payment() {
         this.addOrder();
-        alert('Payment Done')
+       // alert('Payment Done')
+        Swal.fire({
+            icon: 'success',
+            title: 'Payment Done',
+            showConfirmButton: true,
+            confirmButtonText: 'OKAY',
+          })
         window.localStorage.removeItem("cart_size");
         window.localStorage.removeItem("deliveryBoyId");
         window.localStorage.removeItem("orderId");
