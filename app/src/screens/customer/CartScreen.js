@@ -96,8 +96,9 @@ class CartScreen extends Component{
            <Navigation/>
               <div className="container">
                 <h3 className='text-center'>Cart : </h3>
-                <div className="cart">
+                <div className="cart1">
                     <table className="table table-striped">
+                    <thead>
                         <tr className="float-center">
                             <th>Product Name</th>
                             <th>Quantity</th>
@@ -105,7 +106,11 @@ class CartScreen extends Component{
                             <th>Total</th>
                             <th>Delete</th>
                         </tr>
-                        {this.state.cart.map(product => 
+                        </thead>
+                        <tbody>
+                        <div className="container"><h5 className="nameColor1">{this.state.cart.length === 0 && this.state.message}</h5></div>
+                        {this.state.cart.map(
+                            product => 
                             <tr key={product.id}>
                                 <td>{product.productName}</td>
                                 <td>{product.qty}</td>
@@ -114,6 +119,7 @@ class CartScreen extends Component{
                                 <td><button className="btn4 btn-danger" onClick={() => this.deleteProduct(product.id, product.qty)}>Delete</button></td>
                             </tr>
                         )}
+                        </tbody>
                     </table>
                 </div>
                 <div className="cart1">
