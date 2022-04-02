@@ -5,6 +5,12 @@ import {Link} from 'react-router-dom'
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
 import ApiCustomerService from "../../services/customer/ApiCustomerService";
+import Swal from "sweetalert2";
+
+
+
+
+
 class LoginScreen extends Component {
 
   constructor(props) {
@@ -61,7 +67,13 @@ onChange = (e) =>
         message:'',
         cart:[],
         })
-          user != null && alert("User Login successfully By " + this.state.role)
+          
+          user != null && Swal.fire({
+            icon: 'success',
+            title: 'Login As '+user.email+' Successfully',
+            showConfirmButton: true,
+            confirmButtonText: 'OKAY',
+          })
           user != null && this.setState({message : 'User Login successfully.'});
           user != null && window.localStorage.setItem("status", true);
           user != null && window.localStorage.setItem("user_fname", user.firstName);
