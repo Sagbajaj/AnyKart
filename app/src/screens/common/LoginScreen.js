@@ -51,7 +51,7 @@ onChange = (e) =>
           this.getCartSize();
         }
       authenticateUser = (e) => {
-        e.preventDefault();
+       e.preventDefault();
         let loginRequest = {email: this.state.email, password: this.state.password};
         ApiCustomerService.fetchUserByLoginrequest(loginRequest)
       .then(res => {
@@ -136,8 +136,8 @@ onChange = (e) =>
            </div>
            </form>
        </div>
-        </div>
-     );
+        </div>       
+);
     }   
 }
 export default LoginScreen

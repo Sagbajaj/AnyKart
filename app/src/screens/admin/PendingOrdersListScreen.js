@@ -37,6 +37,7 @@ class PendingOrdersListScreen extends Component{
        <div>
            <Navigation/>
             <div className="container">
+         
         <h2 className="text-center">Pending Orders History</h2>
         <table className="table table-striped">
             <thead>

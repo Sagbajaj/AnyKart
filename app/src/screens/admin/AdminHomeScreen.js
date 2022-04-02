@@ -57,6 +57,7 @@ class AdminHomeScreen extends Component {
             </table>
         </div>
         </div>
+        
     );
    }
 }

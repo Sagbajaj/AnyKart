@@ -71,6 +71,7 @@ function App() {
           <Route path="/logout" component={LogoutScreen}/>
           <Route path="/product-details" component={ProductDetailsScreen}/>
           <Route path="/myaccount/profile" component={ProfileScreen}/>
+
           <Route path="/myaccount/editprofile" component={EditProfileScreen}/>
           <Route path="/myaccount/change-password" component={ChangePasswordScreen}/>
           <Route path="/myaccount/changeaddress" component={ChangeAddressScreen}/>

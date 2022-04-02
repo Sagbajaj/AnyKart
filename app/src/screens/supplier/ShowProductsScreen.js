@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Footer from "../../components/Footer"
 import Navigation from "../../components/Navigation"
 import ApiSupplierService from "../../services/supplier/ApiSupplierService";
-
+import Swal from "sweetalert2";
 export default class ShowProductsScreen extends Component {
 
     constructor(props){
@@ -28,7 +28,27 @@ export default class ShowProductsScreen extends Component {
     }
 
     deleteProduct(productId) {
-        ApiSupplierService.deleteProduct(productId)
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire({
+                icon : 'success',
+                title : 'Deleted!',
+                text : 'Your file has been deleted.',
+                showConfirmButton: true,
+                confirmButtonText: 'OKAY',
+              })
+              ApiSupplierService.deleteProduct(productId)
+            }
+          })
+        
         .then((res) => {
             window.location.reload();       
         });
