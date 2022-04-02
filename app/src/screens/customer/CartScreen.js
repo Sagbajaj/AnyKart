@@ -100,7 +100,27 @@ class CartScreen extends Component{
         }
         
     deleteProduct(cartId, qty) {
-        ApiCustomerService.deleteCartByUserId(cartId)
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire({
+                icon : 'success',
+                title : 'Deleted!',
+                text : 'Your file has been deleted.',
+                showConfirmButton: true,
+                confirmButtonText: 'OKAY',
+              })
+              ApiCustomerService.deleteCartByUserId(cartId)
+            }
+          })
+        
         .then((res) => {
             window.location.reload();
             JSON.stringify(window.localStorage.setItem("cart_size", JSON.parse(window.localStorage.getItem("cart_size")) - qty));        

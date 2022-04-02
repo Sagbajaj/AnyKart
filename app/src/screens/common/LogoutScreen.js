@@ -1,6 +1,6 @@
 import "../../App.css"
 import React, { Component } from 'react'
-
+import Swal from "sweetalert2";
 class LogoutScreen extends Component {
 
   constructor(props) {
@@ -31,6 +31,12 @@ changeStatus(st) {
     window.localStorage.removeItem("orderIdForDetails");
     window.localStorage.removeItem("total_price");
     window.localStorage.removeItem("add");
+    Swal.fire({
+      icon: 'success',
+      title: 'Logout Successfully',
+      showConfirmButton: true,
+      confirmButtonText: 'OKAY',
+    })
     this.props.history.push('/home');
   } 
 
@@ -40,7 +46,7 @@ changeStatus(st) {
         <div>
            <h5>!!! Successfully Logout !!!</h5>
         </div>
-     );
+        );
     }   
 }
 export default LogoutScreen
