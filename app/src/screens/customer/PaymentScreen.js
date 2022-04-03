@@ -109,11 +109,11 @@ class PaymentScreen extends Component {
                                 <form>
                                     <div className="form-group">
                                         <label>Card Number</label>
-                                        <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Card Number" name="cardNumber" />
+                                        <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Card Number" name="cardNumber" required='true' />
                                     </div>
                                     <div className="form-group">
                                         <label>CVV</label>
-                                        <input type="text" className="form-control" id="exampleInputPassword1" placeholder="Enter CVV" name="cvv" />
+                                        <input type="text" className="form-control" id="exampleInputPassword1" placeholder="Enter CVV" name="cvv" required='true' />
                                     </div>
                                     <div className="form-group">
                                         <label>Expiry Date</label>
