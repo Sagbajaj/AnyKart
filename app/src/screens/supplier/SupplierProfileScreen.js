@@ -16,7 +16,7 @@ class ProfileScreen extends Component {
       }
     }
     showProfile(){
-      this.props.history.push('/DelBoy/myaccount/profile');
+      this.props.history.push('/Supplier/myaccount/profile');
   }
   
   editProfile(){
