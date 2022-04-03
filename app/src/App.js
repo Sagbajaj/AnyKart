@@ -14,6 +14,8 @@ import PaymentScreen from './screens/customer/PaymentScreen';
 import LogoutScreen from './screens/common/LogoutScreen';
 import ProductDetailsScreen from './screens/customer/ProductDetailsScreen';
 import ProfileScreen from './screens/common/ProfileScreen';
+import CustomerProfileScreen from './screens/customer/CustomerProfileScreen';
+import DelBoyProfileScreen from './screens/delivery_boy/DelBoyProfileScreen';
 import EditProfileScreen from './screens/common/EditProfileScreen';
 import ChangeAddressScreen from './screens/common/ChangeAddressScreen';
 import OrderHistoryScreen from './screens/common/OrderHistoryScreen';
@@ -30,6 +32,7 @@ import DeliverdOrdersListScreen from './screens/admin/DeliverdOrdersListScreen';
 import AdminHomeScreen from './screens/admin/AdminHomeScreen';
 import AdminOrdersDetailsForDeliveredScreen from './screens/admin/AdminOrdersDetailsForDelivered';
 import AdminOrdersDetailsForPendingScreen from './screens/admin/AdminOrderDetailsForPending';
+import SupplierProfileScreen from './screens/supplier/SupplierProfileScreen';
 import ShowSupplierListScreen from './screens/admin/ShowSupplierList';
 import AddSupplierScreen from './screens/admin/AddSupplierScreen';
 import ShowDeliveryBoyScreen from './screens/admin/ShowDeliveryBoyScreen';
@@ -71,7 +74,8 @@ function App() {
           <Route path="/logout" component={LogoutScreen}/>
           <Route path="/product-details" component={ProductDetailsScreen}/>
           <Route path="/myaccount/profile" component={ProfileScreen}/>
-
+          <Route path="/customer/myaccount/profile" component={CustomerProfileScreen}/>
+          <Route path="/DelBoy/myaccount/profile" component={DelBoyProfileScreen}/>
           <Route path="/myaccount/editprofile" component={EditProfileScreen}/>
           <Route path="/myaccount/change-password" component={ChangePasswordScreen}/>
           <Route path="/myaccount/changeaddress" component={ChangeAddressScreen}/>
@@ -80,6 +84,7 @@ function App() {
           <Route path="/orderDetailsPage" component={OrderDetailsPageScreen}/>
           <Route path="/deliveryboyhome" component={DeliveryBoyHomeScreen}/>
           <Route path="/pendingorderfordb" component={PendingOrdersScreen}/>
+          <Route path="/Supplier/myaccount/profile" component={SupplierProfileScreen}/>1
           <Route path="/deliveredorderfordb" component={DeliveredOrdersScreen}/>
           <Route path="/orderdetailspending" component={OrderDetailsForPendingScreen}/>
           <Route path="/orderdetailsdelivered" component={OrdersDetailsForDeliveredScreen}/>
