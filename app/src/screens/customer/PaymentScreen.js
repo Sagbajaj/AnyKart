@@ -117,9 +117,8 @@ class PaymentScreen extends Component {
                                     </div>
                                     <div className="form-group">
                                         <label>Expiry Date</label>
-                                        <input type="text" className="form-control" id="exampleInputPassword1" placeholder="Enter Expiry Date" name="expiryDate" />
+                                        <input type="text" className="form-control" id="exampleInputPassword1" placeholder="Enter Expiry Date" name="expiryDate" required='true' />
                                     </div>
-                                    
                                 </form>
                          </div>     
                      
