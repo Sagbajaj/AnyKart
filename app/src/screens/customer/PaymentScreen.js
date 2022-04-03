@@ -79,6 +79,7 @@ class PaymentScreen extends Component {
 
     render () {
         return (
+            
             <div>
                 <Navigation/>
                 <div className="payment">
@@ -87,16 +88,41 @@ class PaymentScreen extends Component {
                     <h5>Total Price : {window.localStorage.getItem("total_price")}</h5>
                     <br/>
                     <div className="position1">
-                         <div className="dropdown">
-                             <a className="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        
+                             {/* <a className="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                              Payment Type
                              </a>
-                             <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                 <li><a className="dropdown-item" onClick={() => { this.selectCredit()}}>CREDIT</a></li>
-                                 <li><a className="dropdown-item" onClick={() => { this.selectDebit()}}>DEBIT</a></li>
-                             </ul>
+                                <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a className="dropdown-item" onClick={this.selectCredit}>Credit</a>
+                                    <form>
+                                        
+                                    </form>
+                                    <a className="dropdown-item" onClick={this.selectDebit}>Debit</a>
+                                </div>     */}
+                                <div className="form-group">
+                                    <label>Payment Type</label>
+                                    <select className="form-control" id="exampleFormControlSelect1" onChange={this.onChange}>
+                                        <option>Credit</option>
+                                        <option>Debit</option>
+                                    </select>
+                                </div>
+                                <form>
+                                    <div className="form-group">
+                                        <label>Card Number</label>
+                                        <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Card Number" name="cardNumber" />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>CVV</label>
+                                        <input type="text" className="form-control" id="exampleInputPassword1" placeholder="Enter CVV" name="cvv" />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Expiry Date</label>
+                                        <input type="text" className="form-control" id="exampleInputPassword1" placeholder="Enter Expiry Date" name="expiryDate" />
+                                    </div>
+                                    
+                                </form>
                          </div>     
-                     </div> 
+                     
                      <br/>  
 
                     <button className="btn4 btn-primary" style={{width:'150px'}} onClick={() => this.payment()}>Payment</button>
