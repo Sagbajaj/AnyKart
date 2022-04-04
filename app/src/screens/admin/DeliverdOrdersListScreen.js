@@ -37,6 +37,7 @@ class DeliveredOrdersListScreen extends Component{
        <div>
            <Navigation/>
             <div className="container">
+           
         <h2 className="text-center">Delivered Orders History</h2>
         <table className="table table-striped">
             <thead>

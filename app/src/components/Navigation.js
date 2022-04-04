@@ -144,7 +144,7 @@ selectcategory(id, name) {
                 My Account
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="/myaccount/profile">Profile</a></li>
+                  <li><a class="dropdown-item" href="/customer/myaccount/profile">Profile</a></li>
                   <li><a class="dropdown-item" href="/myaccount/editprofile">Edit Profile</a></li>
                   <li><a class="dropdown-item" href="/myaccount/change-password">Update Password</a></li>
                   <li><a class="dropdown-item" href="/myaccount/changeaddress">Change Address</a></li>
@@ -180,7 +180,7 @@ selectcategory(id, name) {
                 My Account
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="/myaccount/profile">Profile</a></li>
+                  <li><a class="dropdown-item" href="/DelBoy/myaccount/profile">Profile</a></li>
                   <li><a class="dropdown-item" href="/myaccount/editprofile">Edit Profile</a></li>
                   <li><a class="dropdown-item" href="/myaccount/change-password">Change Password</a></li>
                   <li><a class="dropdown-item" href="/pendingorderfordb">Pending Orders</a></li>
@@ -219,7 +219,7 @@ selectcategory(id, name) {
                 My Account
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="/myaccount/profile">Profile</a></li>
+                  <li><a class="dropdown-item" href="/Supplier/myaccount/profile">Profile</a></li>
                   <li><a class="dropdown-item" href="/myaccount/editprofile">Edit Profile</a></li>
                   <li><a class="dropdown-item" href="/myaccount/change-password">Change Password</a></li>
                   <li><a class="dropdown-item" href="/myaccount/changeaddress">Change Address</a></li>

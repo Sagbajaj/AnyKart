@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Footer from "../../components/Footer"
 import Navigation from "../../components/Navigation"
 import ApiSupplierService from "../../services/supplier/ApiSupplierService";
+import Swal from "sweetalert2";
 
 export default class AddProductFromSupplierScreen extends Component {
 
@@ -56,12 +57,22 @@ export default class AddProductFromSupplierScreen extends Component {
 
         ApiSupplierService.addProduct(this.state.categoryName, product)
             .then(res => {
-                alert("Product Added successfully")
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Product Added Successfully',
+                    showConfirmButton: true,
+                    confirmButtonText: 'OKAY',
+                  })
             });
 
         ApiSupplierService.deleteFromSuppliedProducts(p.id)
             .then(res => {
-                alert("Product Added successfully")
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Product Added Successfully',
+                    showConfirmButton: true,
+                    confirmButtonText: 'OKAY',
+                  })
                 window.location.reload();
             })
 

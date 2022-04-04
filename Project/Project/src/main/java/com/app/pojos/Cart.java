@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 public class Cart extends BaseEntity{
 	private int productId;
-	@Column(length = 20)
+	@Column(length = 200)
 	private String productName;
 	@Column(length = 100)
 	private String description;

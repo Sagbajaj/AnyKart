@@ -5,7 +5,7 @@ import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
 import ApiCustomerService from "../../services/customer/ApiCustomerService";
 import React, { Component } from 'react'
- 
+import Swal from "sweetalert2";
 class CreateAccountScreen extends Component {
 
   constructor(props) {
@@ -31,10 +31,23 @@ onChange = (e) =>
       ApiCustomerService.addUser(user)
           .then(res => {
             if(res.data.result === null){
-              alert("Email Addreess Already Registered")
+            //  alert("Email Addreess Already Registered")
+              Swal.fire({
+                icon: 'success',
+                title: 'Email Addreess Already Registered',
+                showConfirmButton: true,
+                confirmButtonText: 'OKAY',
+              })
+            
             }
             if(res.data.result !== null){
-              alert("SignUp successfully")
+            //  alert("SignUp successfully")
+              Swal.fire({
+                icon: 'success',
+                title: 'Email Addreess Already Registered',
+                showConfirmButton: true,
+                confirmButtonText: 'OKAY',
+              })
               this.setState({message : 'SignUp successfully.'});
               this.props.history.push('/login');
             }

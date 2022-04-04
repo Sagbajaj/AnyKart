@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer"; 
 import ApiCustomerService from "../../services/customer/ApiCustomerService";
-
+import Swal from 'sweetalert2';
 class PendingOrdersScreen extends Component{
 
     constructor(props) {
@@ -41,7 +41,13 @@ class PendingOrdersScreen extends Component{
     deliveredOrder(orderId) {
         ApiCustomerService.deliveredOrder(orderId)
         .then((res) => {
-            alert("Order Delivered")
+            //alert("Order Delivered")
+            Swal.fire({
+                icon: 'success',
+                title: 'Order Delivered',
+                showConfirmButton: true,
+                confirmButtonText: 'OKAY',
+              })
             window.location.reload();        
         });
     }

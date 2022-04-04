@@ -172,3 +172,12 @@ ul li a {
    background-color:#ebda44;
    border-radius: 50%;
  }
+
+ body.swal2-shown > [aria-hidden="true"] {
+   transition: 0.1s filter;
+   filter: blur(10px);
+ }
+
+
+
+ 

@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer"; 
 import ApiCustomerService from "../../services/customer/ApiCustomerService";
-
+import Swal from 'sweetalert2';
 
 class SupplierListScreen extends Component{
 
@@ -36,7 +36,27 @@ class SupplierListScreen extends Component{
     }
 
     deleteSupplier(id){
-        ApiCustomerService.deleteSupplier(id)
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire({
+                icon : 'success',
+                title : 'Deleted!',
+                text : 'Your file has been deleted.',
+                showConfirmButton: true,
+                confirmButtonText: 'OKAY',
+              })
+              ApiCustomerService.deleteSupplier(id)
+            }
+          })
+        
         .then((res) => {
            window.location.reload();
         });

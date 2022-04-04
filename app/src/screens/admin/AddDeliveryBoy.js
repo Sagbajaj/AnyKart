@@ -5,6 +5,7 @@ import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
 import ApiCustomerService from "../../services/customer/ApiCustomerService";
 import React, { Component } from 'react'
+import Swal from "sweetalert2";
  
 class AddDeliveryBoyScreen extends Component {
 
@@ -31,10 +32,20 @@ onChange = (e) =>
       ApiCustomerService.addUser(user)
           .then(res => {
             if(res.data.result === null){
-              alert("Email Addreess Already Registered")
+              Swal.fire({
+                icon: 'success',
+                title: 'Email Addreess Already Registered',
+                showConfirmButton: true,
+                confirmButtonText: 'OKAY',
+              })
             }
             if(res.data.result !== null){
-              alert("DELIVERY_BOY Add successfully")
+              Swal.fire({
+                icon: 'success',
+                title: 'DELIVERY_BOY Add successfully',
+                showConfirmButton: true,
+                confirmButtonText: 'OKAY',
+              })
               this.setState({message : 'DELIVERY_BOY Add successfully.'});
               this.props.history.push('/showdeliveryboy');
             }

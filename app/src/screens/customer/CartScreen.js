@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer"; 
 import ApiCustomerService from "../../services/customer/ApiCustomerService";
-
+import Swal from 'sweetalert2';
 class CartScreen extends Component{
 
     constructor(props) {
@@ -50,12 +50,24 @@ class CartScreen extends Component{
     placeOrder() {
         let size = JSON.parse(window.localStorage.getItem("cart_size"))
         if(size == 0){
-            alert(" !!! Cart Is Empty !!!")
+            //alert(" !!! Cart Is Empty !!!")
+            Swal.fire({
+                icon: 'success',
+                title: '!!! Cart Is Empty !!!',
+                showConfirmButton: true,
+                confirmButtonText: 'OKAY',
+              })
         }
         if(size !== 0){
             window.localStorage.setItem("add", this.state.pinCode)
             if(this.state.st && window.localStorage.getItem("addressStatus") == 'false'){
-                alert(" !!! Enter Valid Address !!!")
+              //  alert(" !!! Enter Valid Address !!!")
+                Swal.fire({
+                    icon: 'success',
+                    title: '!!! Enter Valid Address !!!',
+                    showConfirmButton: true,
+                    confirmButtonText: 'OKAY',
+                  })
             }
             !this.state.st && this.props.history.push('/login');
             if(window.localStorage.getItem("addressStatus") == 'true'){
@@ -72,7 +84,13 @@ class CartScreen extends Component{
     addAddress() {
         let size = JSON.parse(window.localStorage.getItem("cart_size"))
         if(size == 0){
-            alert(" !!! Cart Is Empty !!!")
+           // alert(" !!! Cart Is Empty !!!")
+            Swal.fire({
+                icon: 'success',
+                title: '!!! Cart Is Empty !!!',
+                showConfirmButton: true,
+                confirmButtonText: 'OKAY',
+              })
         }
         if(size !== 0){
             this.state.st && window.localStorage.setItem("addressStatus", true)
@@ -82,7 +100,27 @@ class CartScreen extends Component{
         }
         
     deleteProduct(cartId, qty) {
-        ApiCustomerService.deleteCartByUserId(cartId)
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire({
+                icon : 'success',
+                title : 'Deleted!',
+                text : 'Your file has been deleted.',
+                showConfirmButton: true,
+                confirmButtonText: 'OKAY',
+              })
+              ApiCustomerService.deleteCartByUserId(cartId)
+            }
+          })
+        
         .then((res) => {
             window.location.reload();
             JSON.stringify(window.localStorage.setItem("cart_size", JSON.parse(window.localStorage.getItem("cart_size")) - qty));        

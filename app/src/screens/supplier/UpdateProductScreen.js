@@ -5,7 +5,7 @@ import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
 import { Component } from "react";
 import ApiSupplierService from "../../services/supplier/ApiSupplierService";
-
+import Swal from "sweetalert2";
 export default class UpdateProductScreen extends Component {
 
     constructor(props) {
@@ -69,7 +69,13 @@ export default class UpdateProductScreen extends Component {
 
         ApiSupplierService.updateProduct(product)
             .then(res => {
-                alert("Product Updates successfully")
+               // alert("Product Updates successfully")
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Product Added successfully',
+                    showConfirmButton: true,
+                    confirmButtonText: 'OKAY',
+                  })
                 this.props.history.push('/supplier/showproducts');
             });
         
