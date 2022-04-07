@@ -63,6 +63,8 @@ onChange = (e) =>
               <input type="text" className="form-control" name="flatNo" value={this.state.flatNo} onChange={this.onChange}/>
           </div>
        </div>
+       
+      
 
        <div className="row mb-3">
           <label className="col-sm-4 col-form-label">Society Name </label>
