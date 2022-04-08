@@ -63,11 +63,9 @@ showdeliveredOrders(){
           <div>
             
             <Navigation/>
-            <div className="main1">
+            <div className="main3">
             <table>
                 <td><button className="btn4 btn-success" onClick={() => this.showProfile()}>Profile</button></td>
-                <td><button className="btn4 btn-danger" onClick={() => this.editProfile()}>Edit Profile</button></td>
-                <td><button className="btn4 btn-success" onClick={() => this.changePassword()}>Change Password</button></td>
                 <td><button className="btn4 btn-danger" onClick={() => this.showPendingOrders()}>Pending Orders</button></td>
                 <td><button className="btn4 btn-danger" onClick={() => this.showdeliveredOrders()}>Delivered Orders</button></td>
                 <td><button className="btn4 btn-danger" onClick={() => this.logout()}>Logout</button></td>

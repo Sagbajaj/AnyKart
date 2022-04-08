@@ -20,7 +20,34 @@ export default class AddProductScreen extends Component {
             categoryName: ''
         }
     }
-
+showProfile(){
+      this.props.history.push('/Supplier/myaccount/profile');
+  }
+  
+  editProfile(){
+      this.props.history.push('/myaccount/editprofile');
+  }
+  changePassword(){
+      this.props.history.push('/myaccount/change-password');
+  }
+  showOrderHistory(){
+      this.props.history.push('/myaccount/orderhistory');
+  }
+  showdeliveredOrders(){
+      this.props.history.push('/deliveredorderforadmin');
+  }
+  showSupplier(){
+      this.props.history.push('/showsupplier');
+  }
+  showDeliveryBoy(){
+      this.props.history.push('/showdeliveryboy');
+  }
+  logout(){
+      this.props.history.push('/logout');
+  }
+  productDetails(){
+    this.props.history.push('/supplier/showproducts');
+}
     componentDidMount(){
         ApiSupplierService.fetchProductCategoryName(window.localStorage.getItem("user_id"))//Hard Coded Make Sure if the category id and supplier id is same
         .then((res) => {
@@ -70,6 +97,14 @@ export default class AddProductScreen extends Component {
         return (
             <div>
                 <Navigation />
+                <div className="main4">
+            <table>
+                <td><button className="btn4 btn-success" onClick={() => this.showProfile()}>Profile</button></td>
+                 <td><button className="btn4 btn-success" onClick={() => this.addProduct()}>Add Product</button></td>
+                <td><button className="btn4 btn-danger" onClick={() => this.productDetails()}>Product List</button></td>
+                <td><button className="btn4 btn-danger" onClick={() => this.logout()}>Logout</button></td>
+            </table>
+        </div>
             <div className="main">
             <Header title="Add Product" />
             <div className="form">

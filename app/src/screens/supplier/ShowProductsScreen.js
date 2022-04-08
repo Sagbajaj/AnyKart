@@ -14,7 +14,37 @@ export default class ShowProductsScreen extends Component {
         };
         this.deleteProduct = this.deleteProduct.bind(this);
     }
-
+    showProfile(){
+        this.props.history.push('/Supplier/myaccount/profile');
+    }
+    
+    editProfile(){
+        this.props.history.push('/myaccount/editprofile');
+    }
+    changePassword(){
+        this.props.history.push('/myaccount/change-password');
+    }
+    showOrderHistory(){
+        this.props.history.push('/myaccount/orderhistory');
+    }
+    showdeliveredOrders(){
+        this.props.history.push('/deliveredorderforadmin');
+    }
+    showSupplier(){
+        this.props.history.push('/showsupplier');
+    }
+    showDeliveryBoy(){
+        this.props.history.push('/showdeliveryboy');
+    }
+    logout(){
+        this.props.history.push('/logout');
+    }
+    productDetails(){
+        this.props.history.push('/supplier/showproducts');
+    }
+    addProduct(){
+        this.props.history.push('/addproduct');
+    }
     componentDidMount() {
         ApiSupplierService.fetchProductsBySupplierId(window.localStorage.getItem("user_id"))//Hard Coded Make Sure if the category id and supplier id is same
         .then((res) => {
@@ -60,6 +90,14 @@ export default class ShowProductsScreen extends Component {
             <div>
                 <Navigation />
                 <div className="container">
+                <div className="main4">
+            <table>
+                <td><button className="btn4 btn-success" onClick={() => this.showProfile()}>Profile</button></td>
+                 <td><button className="btn4 btn-success" onClick={() => this.addProduct()}>Add Product</button></td>
+                <td><button className="btn4 btn-danger" onClick={() => this.productDetails()}>Product List</button></td>
+                <td><button className="btn4 btn-danger" onClick={() => this.logout()}>Logout</button></td>
+            </table>
+        </div>
                 <table class="table table-striped" >
                     <thead>
                         <tr>

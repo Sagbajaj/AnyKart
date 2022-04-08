@@ -17,7 +17,30 @@ class SupplierListScreen extends Component{
         this.getSupplierList = this.getSupplierList.bind(this);
         this.addSupplier = this.addSupplier.bind(this);
     }
-    
+    showProfile(){
+        this.props.history.push('/myaccount/profile');
+    }
+    editProfile(){
+        this.props.history.push('/myaccount/editprofile');
+    }
+    changePassword(){
+        this.props.history.push('/myaccount/change-password');
+    }
+    showPendingOrders(){
+        this.props.history.push('/pendingorderforadmin');
+    }
+    showdeliveredOrders(){
+        this.props.history.push('/deliveredorderforadmin');
+    }
+    showSupplier(){
+        this.props.history.push('/showsupplier');
+    }
+    showDeliveryBoy(){
+        this.props.history.push('/showdeliveryboy');
+    }
+    logout(){
+        this.props.history.push('/logout');
+    }
     componentDidMount() {
       this.getSupplierList();
     }
@@ -66,7 +89,14 @@ class SupplierListScreen extends Component{
     return (
        <div>
            <Navigation/>
+           
             <div className="container">
+                <div className="main1">
+                <td><button className="btn4 btn-danger" onClick={() => this.showPendingOrders()}>Pending Orders</button></td>
+                <td><button className="btn4 btn-success" onClick={() => this.showdeliveredOrders()}>Delivered Orders</button></td>
+                <td><button className="btn4 btn-danger" onClick={() => this.showSupplier()}>Show Supplier</button></td>
+                <td><button className="btn4 btn-success" onClick={() => this.showDeliveryBoy()}>Show Delivery Boy</button></td>
+            </div>
         <h2 className="text-center">Supplier List</h2>
         <table className="table table-striped">
             <thead>
