@@ -109,7 +109,7 @@ onChange = (e) =>
         </div>
       </div>
     </div>
-    <Footer/>
+    
       </div>
       
   )
