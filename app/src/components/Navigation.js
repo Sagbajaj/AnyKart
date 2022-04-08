@@ -275,9 +275,9 @@ selectcategory(id, name) {
               }
               {this.state.st && 
               <li className="nav-item" >
-              <Link to="/myaccount/profile">
+             
                   <a className="nav-link"><h5 className="nameColor2">Hello, {window.localStorage.getItem("user_fname")}</h5></a>
-                </Link>
+             
               </li>
             }
             </ul>

@@ -102,8 +102,8 @@ class PaymentScreen extends Component {
                                 <div className="form-group">
                                     <label>Payment Type</label>
                                     <select className="form-control" id="exampleFormControlSelect1" onChange={this.onChange}>
-                                        <option>Credit</option>
-                                        <option>Debit</option>
+                                        <option onClick={this.selectCredit}>Credit</option>
+                                        <option onClick={this.selectCredit}>Debit</option>
                                     </select>
                                 </div>
                                 <form>

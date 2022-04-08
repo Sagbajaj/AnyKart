@@ -2,6 +2,8 @@ package com.app.dto;
 
 import javax.persistence.Column;
 
+//import lombok.Data;
+
 public class UserDTO {
 	@Column(length = 20, nullable = false)
 	private String firstName;
