@@ -1,27 +1,9 @@
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer"; 
 import React, { Component } from 'react'
+import ApiCustomerService from '../../services/customer/ApiCustomerService';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Bar,BarChart } from 'recharts';
-const data = [
-    {
-      "name": "Suppliers",
-      "No": 4000
-      
-    },
-    {
-      "name": "Delivery Boy",
-      "No1" : 2000
-    },
-    {
-        "name": "Pending Orders",
-        "No3" : 2000
-      },
-      {
-        "name": "Delivered Orders",
-        "No4" : 2000
-      },
-   
-  ]
+
 class AdminHomeScreen extends Component {
     constructor(props) {
         super(props)
@@ -35,7 +17,34 @@ class AdminHomeScreen extends Component {
         this.showDeliveryBoy = this.showDeliveryBoy.bind(this);
         this.logout = this.logout.bind(this);
     }
-  
+    componentDidMount() {
+        this.getcountforadmin();
+      }
+
+      getcountforadmin = () => {
+        ApiCustomerService.getcountforadmin()
+      .then((response) => {
+        const { data } = response;
+        console.log(response);
+        console.log(data);
+
+        return response;
+      })
+      .then(
+        (response) => {
+          this.setState({
+            isLoaded: true,
+            countlist: response.data,
+          });
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error,
+          });
+        }
+      );
+  };
 
     showProfile(){
         this.props.history.push('/myaccount/profile');
@@ -65,23 +74,83 @@ class AdminHomeScreen extends Component {
   
     
    render(){
+    const { error, isLoaded, countlist, data, handleAdd, flag } = this.state;
+    let mydata = [
+        {
+          name: "Supplier",
+          Wholesaler: countlist[0],
+        },
+        {
+          name: "Customer",
+          Retailer: countlist[1],
+        },
+      ];
+      if (error) {
+        return <div>Error: {error.message}</div>;
+      } else {
+        if (flag === true) {
+          return (
+            <div className="container-fluid ps-md-0">
+              <div className="row g-0">
+                <div className=" col-md-12 col-lg-12">
+                  <div className="col-md-12 col-lg-12">
+                    <div className="login d-flex align-items-right py-5">
+                      <div className="container">
+                        <div className="row">
+                          <div className="col-md-9 col-lg-11 mx-auto">
+                            <table className="table table-sm table-dark text-center "></table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            //       </div>
+            //     </div>
+            //   </div>
+            // </div>
+          );
+        } else {
     return (
         
         <div>
             <Navigation/>
-            
            <div className="main2">
-               <BarChart width={700} height={350} data={data}>
-  <CartesianGrid strokeDasharray="3 3" />
-  <XAxis dataKey="name" />
-  <YAxis />
-  <Tooltip />
-  <Legend />
-  <Bar dataKey="No" fill="#8884d8" />
-  <Bar dataKey="No1" fill="#82ca9d" />
-  <Bar dataKey="No3" fill="red" />
-  <Bar dataKey="No4" fill="blue" />
-</BarChart>
+           <ResponsiveContainer width="100%" aspect={3}>
+                <BarChart
+                  width={500}
+                  height={300}
+                  data={mydata}
+                  margin={{
+                    top: 5,
+                    right: 30,
+                    left: 20,
+                    bottom: 5,
+                  }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="name" />
+                  {/* <YAxis dataKey="total" /> */}
+                  <YAxis />
+                  {/* <Tooltip /> */}
+                  <Legend />
+                  <Bar
+                    dataKey="Wholesaler"
+                    fill="lightslategrey"
+                    maxBarSize={200}
+                    label
+                  />
+                  <Bar
+                    dataKey="Retailer"
+                    fill="crimson "
+                    maxBarSize={200}
+                    label
+                  />
+                  {/* <Bar dataKey="fees" fill="#82ca9d" /> */}
+                </BarChart>
+              </ResponsiveContainer>
 </div>
             <div className="main1">
             <table>
@@ -96,8 +165,12 @@ class AdminHomeScreen extends Component {
             </table>
         </div>
         </div>
-        
+            
     );
+    
+   }
+   
+}
    }
 }
 export default AdminHomeScreen

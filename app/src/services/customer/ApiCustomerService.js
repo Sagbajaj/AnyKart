@@ -186,6 +186,10 @@ class ApiCustomerService {
     getUserDetails(customerId){
         return axios.get(USER_API_BASE_URL + '/getuser/' + customerId);
     }
+
+    getCountForAdmin(){
+        return axios.get(USER_API_BASE_URL + '/getcount/');
+    }
 }
 
 export default new ApiCustomerService();
