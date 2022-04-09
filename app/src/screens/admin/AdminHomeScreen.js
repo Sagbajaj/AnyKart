@@ -96,16 +96,19 @@ class AdminHomeScreen extends Component {
         Customer: countlist[1],
       },
       {
-        name: "Delivery boy",
-        Customer: countlist[2],
+        name: "DeliveryBoy",
+        Delivery_Boy: countlist[2],
+      },
+    ];
+
+    let mydata1 = [
+      {
+        name: "Pending Order",
+        Pending_Order : countlist[3],
       },
       {
-        name: "Pending order",
-        Customer: countlist[3],
-      },
-      {
-        name: "Delivered order",
-        Customer: countlist[4],
+        name: "Delivered Order",
+        Delivered_Order: countlist[4],
       },
     ];
     return (
@@ -136,9 +139,14 @@ class AdminHomeScreen extends Component {
                 maxBarSize={200}
                 label
               />
-              <Bar dataKey="Customer" fill="crimson" maxBarSize={200} label />
+              <Bar 
+              dataKey="Customer" 
+              fill="crimson" 
+              maxBarSize={200} 
+              label 
+              />
               <Bar
-                dataKey="Delivery boy"
+                dataKey="Delivery_Boy"
                 fill="yellow"
                 maxBarSize={200}
                 label
@@ -154,7 +162,7 @@ class AdminHomeScreen extends Component {
             <BarChart
               width={500}
               height={300}
-              data={mydata}
+              data={mydata1}
               margin={{
                 top: 5,
                 right: 30,
@@ -165,14 +173,17 @@ class AdminHomeScreen extends Component {
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="name" />
               {/* <YAxis dataKey="total" /> */}
-              <YAxis />
+               <YAxis />
               {/* <Tooltip /> */}
               <Legend />
-              
-              
-              <Bar dataKey="Peding order" fill="blue" maxBarSize={200} label />
+              <Bar 
+              dataKey="Pending_Order" 
+              fill="blue" 
+              maxBarSize={200} 
+              label 
+              />
               <Bar
-                dataKey="Delivered order"
+                dataKey="Delivered_Order"
                 fill="orange"
                 maxBarSize={200}
                 label
