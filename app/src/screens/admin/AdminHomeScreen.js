@@ -7,7 +7,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 class AdminHomeScreen extends Component {
     constructor(props) {
         super(props)
-        
+        this.state={ countlist: []}
         this.showProfile = this.showProfile.bind(this);
         this.editProfile = this.editProfile.bind(this);
         this.changePassword = this.changePassword.bind(this);
@@ -16,13 +16,14 @@ class AdminHomeScreen extends Component {
         this.showSupplier = this.showSupplier.bind(this);
         this.showDeliveryBoy = this.showDeliveryBoy.bind(this);
         this.logout = this.logout.bind(this);
+        
     }
     componentDidMount() {
         this.getcountforadmin();
       }
 
       getcountforadmin = () => {
-        ApiCustomerService.getcountforadmin()
+        ApiCustomerService.getCountForAdmin()
       .then((response) => {
         const { data } = response;
         console.log(response);
@@ -34,7 +35,7 @@ class AdminHomeScreen extends Component {
         (response) => {
           this.setState({
             isLoaded: true,
-            countlist: response.data,
+            countlist : response.data.result,
           });
         },
         (error) => {
@@ -74,47 +75,20 @@ class AdminHomeScreen extends Component {
   
     
    render(){
-    const { error, isLoaded, countlist, data, handleAdd, flag } = this.state;
+    const { countlist  } = this.state;
+    console.log(countlist);
+    console.log("Sagar")
     let mydata = [
         {
           name: "Supplier",
-          Wholesaler: countlist[0],
+          Supplier : countlist[0],
         },
         {
           name: "Customer",
-          Retailer: countlist[1],
+          Customer : countlist[1],
         },
       ];
-      if (error) {
-        return <div>Error: {error.message}</div>;
-      } else {
-        if (flag === true) {
-          return (
-            <div className="container-fluid ps-md-0">
-              <div className="row g-0">
-                <div className=" col-md-12 col-lg-12">
-                  <div className="col-md-12 col-lg-12">
-                    <div className="login d-flex align-items-right py-5">
-                      <div className="container">
-                        <div className="row">
-                          <div className="col-md-9 col-lg-11 mx-auto">
-                            <table className="table table-sm table-dark text-center "></table>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            //       </div>
-            //     </div>
-            //   </div>
-            // </div>
-          );
-        } else {
-    return (
-        
+      return(
         <div>
             <Navigation/>
            <div className="main2">
@@ -149,8 +123,8 @@ class AdminHomeScreen extends Component {
                     label
                   />
                   {/* <Bar dataKey="fees" fill="#82ca9d" /> */}
-                </BarChart>
-              </ResponsiveContainer>
+                 </BarChart>
+               </ResponsiveContainer>  
 </div>
             <div className="main1">
             <table>
@@ -171,6 +145,6 @@ class AdminHomeScreen extends Component {
    }
    
 }
-   }
-}
+   
+
 export default AdminHomeScreen

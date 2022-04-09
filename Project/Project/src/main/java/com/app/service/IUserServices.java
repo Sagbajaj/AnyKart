@@ -31,4 +31,6 @@ public interface IUserServices {
 	Address getAddressDetails(int orderId); //admin methods
 	
 	User getUserDetails(int cId);//admin methods
+	
+	public List<Integer> findcount();
 }

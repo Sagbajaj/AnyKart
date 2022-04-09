@@ -188,7 +188,7 @@ class ApiCustomerService {
     }
 
     getCountForAdmin(){
-        return axios.get(USER_API_BASE_URL + '/getcount/');
+        return axios.post(USER_API_BASE_URL + '/getcount/');
     }
 }
 

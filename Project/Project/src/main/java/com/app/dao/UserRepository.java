@@ -18,5 +18,9 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	@Query("select u.id from User u where u.role=:rl")
 	List<Integer> getAllDeliveryBoy(@Param("rl")Role rl);
 	List<User> findByRole(Role role);
+	@Query(value = "select count(role) from users where role=\"SUPPLIER\";", nativeQuery = true)
+	Integer findAllcountSupplier();
+	@Query(value = "select count(role) from users where role=\"CUSTOMER\";", nativeQuery = true)
+	Integer findAllcountCustomer();
 	
 }

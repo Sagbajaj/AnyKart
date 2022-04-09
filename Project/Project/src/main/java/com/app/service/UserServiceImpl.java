@@ -1,5 +1,6 @@
 package com.app.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -147,5 +148,20 @@ public class UserServiceImpl implements IUserServices {
 		Orders o = orderRepo.findById(oId).get();
 		System.out.println("User : "+o.getSelectedCustomer());
 		return o.getSelectedCustomer();
+	}
+	
+	@Override
+	public List<Integer> findcount() {
+		List<Integer>mylist=new ArrayList<>();
+		Integer supplier = userRepo.findAllcountSupplier();
+		Integer customer = userRepo.findAllcountCustomer();
+		
+		mylist.add(supplier);
+		mylist.add(customer);
+		System.out.println("-------------------");
+		
+		System.out.println(supplier +"  --Supplier---customer count -- "+customer);
+		return mylist;
+		
 	}
 }

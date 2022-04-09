@@ -174,4 +174,14 @@ public class UserController {
 			return new ResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR, "User Not Added", null);
 		}
 	}
+	@PostMapping("/getcount")
+	public ResponseDTO<?> findCount(){
+		System.out.println("in Admin Controller find count method");
+		try {		
+			return new ResponseDTO<>(HttpStatus.OK, "Count retrieved", userService.findcount());
+		}catch (RuntimeException e) {
+			System.out.println("err in createAccount : "+e);
+			return new ResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR, "Error Retrieving count", null);
+		}
+	}
 }
