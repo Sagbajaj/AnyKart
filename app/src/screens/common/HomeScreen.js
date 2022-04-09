@@ -152,7 +152,7 @@ class HomeScreen extends Component {
                         <div className="product col-md-3" key={cat.id}>
                             <div className="title"> 
                             <Link to="/product-category">
-                            <a className="navbar-brand" name="fruitsnvegtables" onClick={() => { this.selectcategory(cat.id, cat.categoryName) }}>
+                            <a className="navbar-brand" name="Category" onClick={() => { this.selectcategory(cat.id, cat.categoryName) }}>
                             <img src={'/images/'+cat.categoryName+'.jpg'} className="d-block w-100 " alt="image" height="200px" width="200px" />
                             </a>
                             </Link> 
