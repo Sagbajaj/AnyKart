@@ -85,7 +85,7 @@ class AdminHomeScreen extends Component {
         },
         {
           name: "Customer",
-          Customer : countlist[1],
+          Customer: countlist[1],
         },
       ];
       return(
