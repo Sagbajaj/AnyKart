@@ -25,7 +25,7 @@ class SupplierListScreen extends Component{
     getSupplierList() {
         ApiCustomerService.fetchSupplierList()
         .then((res) => {
-            console.log("Sagar");
+            console.log("Rohit");
             console.log(res.data);
             this.setState({suppliers: res.data.result})
         });
