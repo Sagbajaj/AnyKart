@@ -36,10 +36,10 @@ public class UserController {
 		try {		
 			User u = userService.authenticateUser(loginRequest);
 			System.out.println("User : "+u);
-			return new ResponseDTO<>(HttpStatus.OK, "User Added", u);
+			return new ResponseDTO<>(HttpStatus.OK, "User logged in", u);
 		}catch (RuntimeException e) {
 			System.out.println("err in authenticateUser : "+e);
-			return new ResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR, "User Not Added", null);
+			return new ResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR, "User Not logged-in", null);
 		}
 	}
 	
