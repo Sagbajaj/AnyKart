@@ -1,7 +1,27 @@
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer"; 
 import React, { Component } from 'react'
-
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Bar,BarChart } from 'recharts';
+const data = [
+    {
+      "name": "Suppliers",
+      "No": 4000
+      
+    },
+    {
+      "name": "Delivery Boy",
+      "No1" : 2000
+    },
+    {
+        "name": "Pending Orders",
+        "No3" : 2000
+      },
+      {
+        "name": "Delivered Orders",
+        "No4" : 2000
+      },
+   
+  ]
 class AdminHomeScreen extends Component {
     constructor(props) {
         super(props)
@@ -15,6 +35,7 @@ class AdminHomeScreen extends Component {
         this.showDeliveryBoy = this.showDeliveryBoy.bind(this);
         this.logout = this.logout.bind(this);
     }
+  
 
     showProfile(){
         this.props.history.push('/myaccount/profile');
@@ -40,10 +61,28 @@ class AdminHomeScreen extends Component {
     logout(){
         this.props.history.push('/logout');
     }
+
+  
+    
    render(){
     return (
+        
         <div>
             <Navigation/>
+            
+           <div className="main2">
+               <BarChart width={700} height={350} data={data}>
+  <CartesianGrid strokeDasharray="3 3" />
+  <XAxis dataKey="name" />
+  <YAxis />
+  <Tooltip />
+  <Legend />
+  <Bar dataKey="No" fill="#8884d8" />
+  <Bar dataKey="No1" fill="#82ca9d" />
+  <Bar dataKey="No3" fill="red" />
+  <Bar dataKey="No4" fill="blue" />
+</BarChart>
+</div>
             <div className="main1">
             <table>
                 {/* <td><button className="btn4 btn-success" onClick={() => this.showProfile()}>Profile</button></td>

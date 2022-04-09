@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer"; 
 import ApiCustomerService from "../../services/customer/ApiCustomerService";
-
+import Swal from 'sweetalert2';
 class DeliveryBoyListScreen extends Component{
 
     constructor(props) {
@@ -14,6 +14,30 @@ class DeliveryBoyListScreen extends Component{
       }
         this.getDeliveryBoyList = this.getDeliveryBoyList.bind(this);
         this.addDeliveryBoy = this.addDeliveryBoy.bind(this);
+    }
+    showProfile(){
+        this.props.history.push('/myaccount/profile');
+    }
+    editProfile(){
+        this.props.history.push('/myaccount/editprofile');
+    }
+    changePassword(){
+        this.props.history.push('/myaccount/change-password');
+    }
+    showPendingOrders(){
+        this.props.history.push('/pendingorderforadmin');
+    }
+    showdeliveredOrders(){
+        this.props.history.push('/deliveredorderforadmin');
+    }
+    showSupplier(){
+        this.props.history.push('/showsupplier');
+    }
+    showDeliveryBoy(){
+        this.props.history.push('/showdeliveryboy');
+    }
+    logout(){
+        this.props.history.push('/logout');
     }
     
     componentDidMount() {
@@ -32,7 +56,27 @@ class DeliveryBoyListScreen extends Component{
     }
     
     deleteDelBoy(id){
-        ApiCustomerService.deleteDelBoy(id)
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire({
+                icon : 'success',
+                title : 'Deleted!',
+                text : 'Your file has been deleted.',
+                showConfirmButton: true,
+                confirmButtonText: 'OKAY',
+              })
+              ApiCustomerService.deleteDelBoy(id)
+            }
+          })
+        
         .then((res) => {
            window.location.reload();
         });
@@ -44,6 +88,12 @@ class DeliveryBoyListScreen extends Component{
        <div>
            <Navigation/>
             <div className="container">
+            <div className="main1">
+                <td><button className="btn4 btn-danger" onClick={() => this.showPendingOrders()} >Pending Orders</button></td>
+                <td><button className="btn4 btn-success" onClick={() => this.showdeliveredOrders()}>Delivered Orders</button></td>
+                <td><button className="btn4 btn-danger" onClick={() => this.showSupplier()}>Show Supplier</button></td>
+                <td><button className="btn4 btn-success" onClick={() => this.showDeliveryBoy()}>Show Delivery Boy</button></td>
+            </div>
         <h2 className="text-center">Delivery Boy List</h2>
         <table className="table table-striped">
             <thead>
@@ -52,10 +102,11 @@ class DeliveryBoyListScreen extends Component{
                     <th>Last Name</th>
                     <th>Email</th>
                     <th>Phone</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
-                <div className="container"><h5 className="nameColor1">{this.state.boys.length == 0 && this.state.message}</h5></div>
+                <div className="container"><h5 className="nameColor1">{this.state.boys.length === 0 && this.state.message}</h5></div>
                 {this.state.boys.map(
                         boy =>
                         <tr key={boy.id}>

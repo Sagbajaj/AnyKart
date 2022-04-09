@@ -15,7 +15,7 @@ class DeliveryBoyHomeScreen extends Component {
     }
 
     showProfile(){
-        this.props.history.push('/myaccount/profile');
+        this.props.history.push('/DelBoy/myaccount/profile');
     }
     editProfile(){
         this.props.history.push('/myaccount/editprofile');
@@ -36,11 +36,9 @@ class DeliveryBoyHomeScreen extends Component {
     return (
         <div>
             <Navigation/>
-            <div className="main1">
+            <div className="main3">
             <table>
                 <td><button className="btn4 btn-success" onClick={() => this.showProfile()}>Profile</button></td>
-                <td><button className="btn4 btn-success" onClick={() => this.editProfile()}>Edit Profile</button></td>
-                <td><button className="btn4 btn-success" onClick={() => this.changePassword()}>Change Password</button></td>
                 <td><button className="btn4 btn-danger" onClick={() => this.showPendingOrders()}>Pending Orders</button></td>
                 <td><button className="btn4 btn-danger" onClick={() => this.showdeliveredOrders()}>Delivered Orders</button></td>
                 <td><button className="btn4 btn-success" onClick={() => this.logout()}>Logout</button></td>

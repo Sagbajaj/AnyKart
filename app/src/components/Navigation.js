@@ -245,6 +245,7 @@ selectcategory(id, name) {
             }
 
             <ul className="nav justify-content-end">
+
               { window.localStorage.getItem("user_role") !== 'DELIVERY_BOY' &&
               window.localStorage.getItem("user_role") !== 'ADMIN' &&
               window.localStorage.getItem("user_role") !== 'SUPPLIER' &&
@@ -266,6 +267,7 @@ selectcategory(id, name) {
                 </Link>
               </li>
             }
+
               {!this.state.st && 
               <li className="nav-item" >
                 <Link to="/login">
@@ -275,11 +277,44 @@ selectcategory(id, name) {
               }
               {this.state.st && 
               <li className="nav-item" >
-              <Link to="/myaccount/profile">
+             
                   <a className="nav-link"><h5 className="nameColor2">Hello, {window.localStorage.getItem("user_fname")}</h5></a>
-                </Link>
+             
               </li>
             }
+            
+              {
+              this.state.st && window.localStorage.getItem("user_role") == 'CUSTOMER' &&
+              <li className="nav-item" >  
+                <Link to="/logout">
+                  <a className="nav-link"><h5 className="nameColor2">Logout</h5></a>
+                </Link>
+              </li>
+              }
+               {
+              this.state.st && window.localStorage.getItem("user_role") == 'ADMIN' &&
+              <li className="nav-item" >  
+                <Link to="/logout">
+                  <a className="nav-link"><h5 className="nameColor2">Logout</h5></a>
+                </Link>
+              </li>
+              }
+               {
+              this.state.st && window.localStorage.getItem("user_role") == 'SUPPLIER' &&
+              <li className="nav-item" >  
+                <Link to="/logout">
+                  <a className="nav-link"><h5 className="nameColor2">Logout</h5></a>
+                </Link>
+              </li>
+              }
+               {
+              this.state.st && window.localStorage.getItem("user_role") == 'DELIVERY_BOY' &&
+              <li className="nav-item" >  
+                <Link to="/logout">
+                  <a className="nav-link"><h5 className="nameColor2">Logout</h5></a>
+                </Link>
+              </li>
+              }
             </ul>
           </div>
            

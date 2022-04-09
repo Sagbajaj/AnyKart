@@ -51,12 +51,38 @@ class PendingOrdersScreen extends Component{
             window.location.reload();        
         });
     }
-
+    showProfile(){
+        this.props.history.push('/DelBoy/myaccount/profile');
+    }
+    editProfile(){
+        this.props.history.push('/myaccount/editprofile');
+    }
+    changePassword(){
+        this.props.history.push('/myaccount/change-password');
+    }
+    showPendingOrders(){
+        this.props.history.push('/pendingorderfordb');
+    }
+    showdeliveredOrders(){
+        this.props.history.push('/deliveredorderfordb');
+    }
+    logout(){
+        this.props.history.push('/logout');
+    }
     render() {
     return (
        <div>
            <Navigation/>
             <div className="container">
+            <div className="main3">
+            <table>
+                <td><button className="btn4 btn-success" onClick={() => this.showProfile()}>Profile</button></td>
+                <td><button className="btn4 btn-danger" onClick={() => this.showPendingOrders()}>Pending Orders</button></td>
+                <td><button className="btn4 btn-danger" onClick={() => this.showdeliveredOrders()}>Delivered Orders</button></td>
+                <td><button className="btn4 btn-success" onClick={() => this.logout()}>Logout</button></td>
+
+            </table>
+        </div>
         <h2 className="text-center">Pending Orders History</h2>
         <table className="table table-striped">
             <thead>

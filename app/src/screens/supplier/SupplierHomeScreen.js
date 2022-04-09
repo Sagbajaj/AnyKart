@@ -16,7 +16,7 @@ class SupplierHomeScreen extends Component {
     }
 
     showProfile(){
-        this.props.history.push('/myaccount/profile');
+        this.props.history.push('/Supplier/myaccount/profile');
     }
 
     editProfile(){
@@ -46,12 +46,9 @@ class SupplierHomeScreen extends Component {
     return (
         <div>
             <Navigation/>
-            <div className="main1">
+            <div className="main4">
             <table>
                 <td><button className="btn4 btn-success" onClick={() => this.showProfile()}>Profile</button></td>
-                <td><button className="btn4 btn-danger" onClick={() => this.editProfile()}>Edit Profile</button></td>
-                <td><button className="btn4 btn-success" onClick={() => this.changePassword()}>Change Password</button></td>
-                <td><button className="btn4 btn-danger" onClick={() => this.changeAddress()}>Change Address</button></td>
                 <td><button className="btn4 btn-success" onClick={() => this.addProduct()}>Add Product</button></td>
                 <td><button className="btn4 btn-danger" onClick={() => this.productDetails()}>Product List</button></td>
                 <td><button className="btn4 btn-success" onClick={() => this.logout()}>Logout</button></td>

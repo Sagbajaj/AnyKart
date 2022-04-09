@@ -18,6 +18,14 @@ class ProfileScreen extends Component {
     showProfile(){
       this.props.history.push('/customer/myaccount/profile');
   }
+  showCategory(){
+    this.props.history.push('');
+    
+}
+showCart(){
+    this.props.history.push('/cart');
+    
+}
   editProfile(){
       this.props.history.push('/myaccount/editprofile');
   }
@@ -56,12 +64,13 @@ class ProfileScreen extends Component {
           <div>
             
             <Navigation/>
-            <div className="main1">
+            <div className="main2">
             <table>
                 <td><button className="btn4 btn-success" onClick={() => this.showProfile()}>Profile</button></td>
-                <td><button className="btn4 btn-danger" onClick={() => this.editProfile()}>Edit Profile</button></td>
-                <td><button className="btn4 btn-success" onClick={() => this.changePassword()}>Change Password</button></td>
+               
+                <td><button className="btn4 btn-success" onClick={() => this.showCategory}>Category</button></td>
                 <td><button className="btn4 btn-success" onClick={() => this.showOrderHistory()}>Order history</button></td>
+                <td><button className="btn4 btn-success" onClick={() => this.showCart()}>Cart</button></td>
                 <td><button className="btn4 btn-danger" onClick={() => this.logout()}>Logout</button></td>
             </table>
         </div>
