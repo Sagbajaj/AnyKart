@@ -98,8 +98,8 @@ export default class ShowProductsScreen extends Component {
                 <td><button className="btn4 btn-danger" onClick={() => this.logout()}>Logout</button></td>
             </table>
         </div>
-                <table class="table table-striped" >
-                    <thead>
+                <table class="table" >
+                    <thead class="table-dark">
                         <tr>
                         <th scope="col" width="10%">Product id</th>
                         <th scope="col" width="20%">Product Name</th>

@@ -70,8 +70,8 @@ class DeliveredOrdersScreen extends Component{
             </table>
         </div>
         <h2 className="text-center">Delivered Orders History</h2>
-        <table className="table table-striped">
-            <thead>
+        <table className="table">
+            <thead class="table-dark">
                 <tr>
                     <th>Orders Amount</th>
                     <th>Order Date</th>
@@ -81,8 +81,8 @@ class DeliveredOrdersScreen extends Component{
                     <th>Details</th>
                 </tr>
             </thead>
-            <tbody>
             <div className="container"><h5 className="nameColor1">{this.state.orders.filter(order => order.orderDeliveryStatus === 'DELIVERED').length == 0 && this.state.message}</h5></div>
+            <tbody>
                 {this.state.orders.map(
                         order =>
                         order.orderDeliveryStatus === 'DELIVERED' && <tr key={order.id}>

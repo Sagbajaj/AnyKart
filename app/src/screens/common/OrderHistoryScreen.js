@@ -73,10 +73,9 @@ class OrderHistoryScreen extends Component{
        <div>
            <Navigation/>
             <div className="container">
-            <div className="main2">
+            <div className="main3">
             <table>
                 <td><button className="btn4 btn-success" onClick={() => this.showProfile()}>Profile</button></td>
-               
                 <td><button className="btn4 btn-success" onClick={() => this.showCategory}>Category</button></td>
                 <td><button className="btn4 btn-success" onClick={() => this.showOrderHistory()}>Order history</button></td>
                 <td><button className="btn4 btn-success" onClick={() => this.showCart()}>Cart</button></td>
@@ -84,8 +83,8 @@ class OrderHistoryScreen extends Component{
             </table>
         </div>
         <h2 className="text-center">Orders History</h2>
-        <table className="table table-striped">
-            <thead>
+        <table className="table">
+            <thead class="table-dark">
                 <tr>
                     <th>Orders Amount</th>
                     <th>Order Date</th>

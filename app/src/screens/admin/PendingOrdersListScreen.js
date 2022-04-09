@@ -67,8 +67,8 @@ class PendingOrdersListScreen extends Component{
                 <td><button className="btn4 btn-success" onClick={() => this.showDeliveryBoy()}>Show Delivery Boy</button></td>
             </div>
         <h2 className="text-center">Pending Orders History</h2>
-        <table className="table table-striped">
-            <thead>
+        <table className="table">
+            <thead class="table-dark">
                 <tr>
                     <th>Order ID</th>
                     <th>Orders Amount</th>
@@ -78,8 +78,8 @@ class PendingOrdersListScreen extends Component{
                     <th>Details</th>
                 </tr>
             </thead>
-            <tbody>
                 <div className="container"><h5 className="nameColor1">{this.state.orders.filter(order => order.orderDeliveryStatus === 'PENDING').length == 0 && this.state.message}</h5></div>
+            <tbody>
                 {this.state.orders.map(
                         order =>
                         order.orderDeliveryStatus === 'PENDING' && <tr key={order.id}>

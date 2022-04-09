@@ -164,7 +164,7 @@ class CartScreen extends Component{
        <div>
            <Navigation/>
               <div className="container">
-              <div className="main2">
+              <div className="main3">
             <table>
                 <td><button className="btn4 btn-success" onClick={() => this.showProfile()}>Profile</button></td>
                

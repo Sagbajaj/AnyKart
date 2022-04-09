@@ -95,8 +95,8 @@ class DeliveryBoyListScreen extends Component{
                 <td><button className="btn4 btn-success" onClick={() => this.showDeliveryBoy()}>Show Delivery Boy</button></td>
             </div>
         <h2 className="text-center">Delivery Boy List</h2>
-        <table className="table table-striped">
-            <thead>
+        <table className="table">
+            <thead class="table-dark">
                 <tr>
                     <th>First Name</th>
                     <th>Last Name</th>
@@ -105,8 +105,8 @@ class DeliveryBoyListScreen extends Component{
                     <th>Delete</th>
                 </tr>
             </thead>
-            <tbody>
                 <div className="container"><h5 className="nameColor1">{this.state.boys.length === 0 && this.state.message}</h5></div>
+            <tbody>
                 {this.state.boys.map(
                         boy =>
                         <tr key={boy.id}>
@@ -119,8 +119,9 @@ class DeliveryBoyListScreen extends Component{
                     )
                 }
             </tbody>  
-            <td><button className="btn4 btn-success" onClick={() => this.addDeliveryBoy()}>Add Delivery Boy</button></td>       
+             
         </table>
+        <button className="btn4 btn-success" onClick={() => this.addDeliveryBoy()}>Add Delivery Boy</button>     
     </div>
        </div>
     );

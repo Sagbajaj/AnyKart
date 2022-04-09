@@ -98,7 +98,8 @@ class SupplierListScreen extends Component{
                 <td><button className="btn4 btn-success" onClick={() => this.showDeliveryBoy()}>Show Delivery Boy</button></td>
             </div>
         <h2 className="text-center">Supplier List</h2>
-        <table className="table table-striped">
+        <br></br>
+        <table className="table table-success table-striped">
             <thead>
                 <tr>
                     <th>First Name</th>
@@ -108,10 +109,11 @@ class SupplierListScreen extends Component{
                     <th>Products</th>
                     <th>Check Available Products</th>
                     <th>Address</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
+            <div className="container"><h5 className="nameColor1">{this.state.suppliers.length === 0 && this.state.message}</h5></div>
             <tbody>
-                <div className="container"><h5 className="nameColor1">{this.state.suppliers.length === 0 && this.state.message}</h5></div>
                 {this.state.suppliers.map(
                         supplier =>
                         <tr key={supplier.id}>
