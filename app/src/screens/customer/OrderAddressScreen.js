@@ -38,7 +38,7 @@ onChange = (e) =>
             //  alert("Address added successfully")
               Swal.fire({
                 icon: 'success',
-                title: 'Addreess added successfully',
+                title: 'Address added successfully',
                 showConfirmButton: true,
                 confirmButtonText: 'OKAY',
               })

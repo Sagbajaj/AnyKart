@@ -135,19 +135,19 @@ class AdminHomeScreen extends Component {
               <Legend />
               <Bar
                 dataKey="Supplier"
-                fill="lightslategrey"
+                fill="#92a8d1"
                 maxBarSize={200}
                 label
               />
               <Bar 
               dataKey="Customer" 
-              fill="crimson" 
+              fill="#eea29a" 
               maxBarSize={200} 
               label 
               />
               <Bar
                 dataKey="Delivery_Boy"
-                fill="yellow"
+                fill="#587e76"
                 maxBarSize={200}
                 label
               />
@@ -178,13 +178,13 @@ class AdminHomeScreen extends Component {
               <Legend />
               <Bar 
               dataKey="Pending_Order" 
-              fill="blue" 
+              fill="#5b9aa0" 
               maxBarSize={200} 
               label 
               />
               <Bar
                 dataKey="Delivered_Order"
-                fill="orange"
+                fill="#622569"
                 maxBarSize={200}
                 label
               />

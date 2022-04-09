@@ -34,7 +34,7 @@ onChange = (e) =>
             //  alert("Email Addreess Already Registered")
               Swal.fire({
                 icon: 'success',
-                title: 'Email Addreess Already Registered',
+                title: 'Email Address Already Registered',
                 showConfirmButton: true,
                 confirmButtonText: 'OKAY',
               })
@@ -44,7 +44,7 @@ onChange = (e) =>
             //  alert("SignUp successfully")
               Swal.fire({
                 icon: 'success',
-                title: 'Email Addreess Already Registered',
+                title: 'Email Address Already Registered',
                 showConfirmButton: true,
                 confirmButtonText: 'OKAY',
               })

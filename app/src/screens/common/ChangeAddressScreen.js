@@ -53,7 +53,7 @@ onChange = (e) =>
               alert("Address Update successfully")
               Swal.fire({
                 icon: 'success',
-                title: 'Addreess Update successfully',
+                title: 'Address Update successfully',
                 showConfirmButton: true,
                 confirmButtonText: 'OKAY',
               })
