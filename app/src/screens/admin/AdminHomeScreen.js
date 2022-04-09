@@ -137,13 +137,13 @@ class AdminHomeScreen extends Component {
                   {/* <Tooltip /> */}
                   <Legend />
                   <Bar
-                    dataKey="Wholesaler"
+                    dataKey="Supplier"
                     fill="lightslategrey"
                     maxBarSize={200}
                     label
                   />
                   <Bar
-                    dataKey="Retailer"
+                    dataKey="Customer"
                     fill="crimson "
                     maxBarSize={200}
                     label
