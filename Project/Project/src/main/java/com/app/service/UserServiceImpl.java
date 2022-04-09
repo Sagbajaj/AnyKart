@@ -155,9 +155,15 @@ public class UserServiceImpl implements IUserServices {
 		List<Integer>mylist=new ArrayList<>();
 		Integer supplier = userRepo.findAllcountSupplier();
 		Integer customer = userRepo.findAllcountCustomer();
+		Integer delivery_boy= userRepo.findAllcountDeliveryBoy();
+		Integer pendingOrders= userRepo.findAllcountPendingOrders();
+		Integer deliveredOrders= userRepo.findAllcountDeliveredOrders();
 		
 		mylist.add(supplier);
 		mylist.add(customer);
+		mylist.add(delivery_boy);
+		mylist.add(pendingOrders);
+		mylist.add(deliveredOrders);
 		System.out.println("-------------------");
 		
 		System.out.println(supplier +"  --Supplier---customer count -- "+customer);

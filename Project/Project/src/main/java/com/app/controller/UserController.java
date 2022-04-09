@@ -180,7 +180,7 @@ public class UserController {
 		try {		
 			return new ResponseDTO<>(HttpStatus.OK, "Count retrieved", userService.findcount());
 		}catch (RuntimeException e) {
-			System.out.println("err in createAccount : "+e);
+			System.out.println("err in findcount : "+e);
 			return new ResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR, "Error Retrieving count", null);
 		}
 	}

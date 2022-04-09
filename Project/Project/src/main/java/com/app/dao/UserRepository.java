@@ -20,7 +20,18 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	List<User> findByRole(Role role);
 	@Query(value = "select count(role) from users where role=\"SUPPLIER\";", nativeQuery = true)
 	Integer findAllcountSupplier();
+	
 	@Query(value = "select count(role) from users where role=\"CUSTOMER\";", nativeQuery = true)
 	Integer findAllcountCustomer();
+	
+	@Query(value = "select count(role) from users where role=\"DELIVERY_BOY\";", nativeQuery = true)
+	Integer findAllcountDeliveryBoy();
+	
+	@Query(value = "select count(order_delivery_status) from project.orders where order_delivery_status=\"PENDING\";", nativeQuery = true)
+	Integer findAllcountPendingOrders();
+	
+	@Query(value = "select count(order_delivery_status) from project.orders where order_delivery_status=\"DELIVERED\";", nativeQuery = true)
+	Integer findAllcountDeliveredOrders();
+	
 	
 }
