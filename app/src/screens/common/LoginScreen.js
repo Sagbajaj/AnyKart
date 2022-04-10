@@ -132,7 +132,7 @@ class LoginScreen extends Component {
                 name="password"
                 value={this.state.password}
                 onChange={this.onChange}
-                required="required"
+                required="required" 
               ></input>
             </div>
             <div className="mb-3">

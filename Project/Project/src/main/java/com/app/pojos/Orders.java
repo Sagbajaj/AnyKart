@@ -1,5 +1,6 @@
 package com.app.pojos;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 //order_id	user_id / customer_id	user_id / delivery_boy_id	order_delivery_status	
 //total_price	order_date	delivery_date
 @Entity
-public class Orders extends BaseEntity{
+public class Orders extends BaseEntity implements Serializable{
 	@Enumerated(EnumType.STRING)
 	private OrderStatus orderDeliveryStatus;
 	private double totalPrice;
@@ -28,19 +29,28 @@ public class Orders extends BaseEntity{
 	private LocalDate orderDate;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate deliveryDate;
-	
+	private String razorpayPaymentId;
+	 
+    private String razorpayOrderId;
+ 
+    private String razorpaySignature;
+    private Long userId;
+	public Long getUserId() {
+		return userId;
+	}
+
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+
+
 	public Orders() {
 		System.out.println("in ctor of "+getClass().getName());
 	}
 	
 	
-	public Orders(OrderStatus orderDeliveryStatus, double totalPrice, LocalDate orderDate, LocalDate deliveryDate) {
-		super();
-		this.orderDeliveryStatus = orderDeliveryStatus;
-		this.totalPrice = totalPrice;
-		this.orderDate = orderDate;
-		this.deliveryDate = deliveryDate;
-	}
+	
 
 
 	@OneToMany(mappedBy = "selectedOrder", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -57,6 +67,36 @@ public class Orders extends BaseEntity{
 
 	public OrderStatus getOrderDeliveryStatus() {
 		return orderDeliveryStatus;
+	}
+
+
+	public String getRazorpayPaymentId() {
+		return razorpayPaymentId;
+	}
+
+
+	public void setRazorpayPaymentId(String razorpayPaymentId) {
+		this.razorpayPaymentId = razorpayPaymentId;
+	}
+
+
+	public String getRazorpayOrderId() {
+		return razorpayOrderId;
+	}
+
+
+	public void setRazorpayOrderId(String razorpayOrderId) {
+		this.razorpayOrderId = razorpayOrderId;
+	}
+
+
+	public String getRazorpaySignature() {
+		return razorpaySignature;
+	}
+
+
+	public void setRazorpaySignature(String razorpaySignature) {
+		this.razorpaySignature = razorpaySignature;
 	}
 
 
@@ -129,6 +169,12 @@ public class Orders extends BaseEntity{
 	public String toString() {
 		return "Orders [orderDeliveryStatus=" + orderDeliveryStatus + ", totalPrice=" + totalPrice + ", orderDate="
 				+ orderDate + ", deliveryDate=" + deliveryDate + "]";
+	}
+
+
+	public Long setUserId(Integer integer) {
+		// TODO Auto-generated method stub
+			return userId;
 	}
 	
 	

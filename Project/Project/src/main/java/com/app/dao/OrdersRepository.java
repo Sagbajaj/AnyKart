@@ -14,5 +14,7 @@ public interface OrdersRepository extends JpaRepository<Orders, Integer> {
 	List<Orders> findByselectedCustomer(User user);
 	
 	List<Orders> findBySelectedDeliveryBoy(User user);
+	
+	Orders findByRazorpayOrderId(String orderId);
 
 }

@@ -153,5 +153,10 @@ public class User extends BaseEntity{
 		return "User [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", role=" + role
 				+ ", phone=" + phone + "]";
 	}
+
+	public BaseEntity getUser() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }
