@@ -120,6 +120,7 @@ class LoginScreen extends Component {
                 name="email"
                 value={this.state.email}
                 onChange={this.onChange}
+                required="required"
               />
             </form>
             <div className="mb-3">
@@ -131,6 +132,7 @@ class LoginScreen extends Component {
                 name="password"
                 value={this.state.password}
                 onChange={this.onChange}
+                required="required"
               ></input>
             </div>
             <div className="mb-3">
