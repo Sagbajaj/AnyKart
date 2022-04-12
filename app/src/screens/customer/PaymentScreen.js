@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ApiCustomerService from "../../services/customer/ApiCustomerService";
 import Navigation from "../../components/Navigation";
 import Swal from 'sweetalert2';
-
+import { send } from 'emailjs-com';
 class PaymentScreen extends Component {
 
     constructor(props) {
@@ -53,9 +53,53 @@ class PaymentScreen extends Component {
         ApiCustomerService.addOrderIdtoOrderAddress(window.localStorage.getItem("address_id"), window.localStorage.getItem("orderId"))
     }
 
+    
+
+    selectCredit() {
+        this.state.paymentInfo= "CREDIT";
+    }
+
+    selectDebit() {
+        this.state.paymentInfo= "DEBIT";
+    }
+
+    
+    onMail() {
+
+
+        let msg = 'Your Order has been placed. :)';
+
+        let tosend = {
+            from_name: 'AnyKart',
+            to_name: localStorage.getItem('user_fname'),
+            message: msg,
+            reply_to: localStorage.getItem('user_email'),
+        }
+        send(
+            'service_e6zmpmx',
+            'template_7xlpzj1',
+            tosend,
+            '9AG5ifX8UgKlUDe_e'
+        )
+            .then((response) => {
+                console.log('SUCCESS!', response.status, response.text);
+                alert('Mail Send Sucessfully!!')
+            })
+            .catch((err) => {
+                console.log('FAILED...', err);
+            });
+
+    }
     payment() {
         this.addOrder();
        // alert('Payment Done')
+       this.onMail();
+       Swal.fire({
+        icon: 'success',
+        title: 'Email Done',
+        showConfirmButton: true,
+        confirmButtonText: 'OKAY',
+      })
         Swal.fire({
             icon: 'success',
             title: 'Payment Done',
@@ -67,14 +111,6 @@ class PaymentScreen extends Component {
         window.localStorage.removeItem("orderId");
 
         this.props.history.push('/home');
-    }
-
-    selectCredit() {
-        this.state.paymentInfo= "CREDIT";
-    }
-
-    selectDebit() {
-        this.state.paymentInfo= "DEBIT";
     }
 
     render () {

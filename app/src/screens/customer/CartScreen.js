@@ -203,15 +203,13 @@ class CartScreen extends Component{
                 </div>
                 <div className="cart1">
                     <h3>Total Amount : {this.state.tamt}</h3>
-                    <h3>Shipping Amount : {this.state.samt}</h3>
-                    <h3>Grand Total : {this.state.tamt + this.state.samt}</h3>
                 </div>
                 </div>
         <br/>
 
         <div className="float-end">
         <h5>Total Price : {this.state.tamt}</h5>
-        <h5>Savings Amount : {this.state.samt}</h5>
+        {/* <h5>Savings Amount : {this.state.samt}</h5> */}
         <button className="btn4 btn-primary" style={{width:'200px'}} onClick={() => this.addAddress()}>Add Address</button><br/><br/>
         <button className="btn4 btn-primary" style={{width:'200px'}} onClick={() => this.placeOrder()}>Place Order</button>
         </div>

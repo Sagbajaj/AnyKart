@@ -6,6 +6,14 @@ import Footer from "../../components/Footer";
 import ApiCustomerService from "../../services/customer/ApiCustomerService";
 import React, { Component } from 'react'
 import Swal from "sweetalert2";
+const validEmailRegex = RegExp(
+  /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+);
+const validateForm = errors => {
+  let valid = true;
+  Object.values(errors).forEach(val => val.length > 0 && (valid = false));
+  return valid;
+};
 class CreateAccountScreen extends Component {
 
   constructor(props) {
@@ -17,17 +25,61 @@ class CreateAccountScreen extends Component {
       password: '',
       phone: '',
       role:'CUSTOMER',
-      message: ''
+      message: '',
+      errors: {
+        firstName: '',
+        lastName : '',
+        email: '',
+        password: '',
+      }
   }
-    this.registerUser = this.registerUser.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+   
 }
 
-onChange = (e) =>
-        this.setState({ [e.target.name]: e.target.value });
+handleChange = (event) => {
+  event.preventDefault();
+  const { name, value } = event.target;
+  
+  let errors = this.state.errors;
 
-    registerUser = (e) => {
-      e.preventDefault();
+  switch (name) {
+    case 'firstName': 
+      errors.firstName = 
+        value.length < 2
+          ? 'First Name must be at least 2 characters long!'
+          : '';
+      break;
+      case 'lastName': 
+      errors.lastName = 
+        value.length < 4
+          ? 'Last Name must be at least 4 characters long!'
+          : '';
+      break;
+    case 'email': 
+      errors.email = 
+        validEmailRegex.test(value)
+          ? ''
+          : 'Email is not valid!';
+      break;
+    case 'password': 
+      errors.password = 
+        value.length < 8
+          ? 'Password must be at least 8 characters long!'
+          : '';
+      break;
+    default:
+      break;
+  }
+
+  this.setState({errors, [name]: value}) ;
+}
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    if(validateForm(this.state.errors)) {
       let user = {firstName: this.state.firstName, lastName: this.state.lastName, email: this.state.email, password: this.state.password, phone: this.state.phone, role: this.state.role};
+      console.info('Valid Form')
       ApiCustomerService.addUser(user)
           .then(res => {
             if(res.data.result === null){
@@ -44,7 +96,7 @@ onChange = (e) =>
             //  alert("SignUp successfully")
               Swal.fire({
                 icon: 'success',
-                title: 'Email Address Already Registered',
+                title: 'User Registered',
                 showConfirmButton: true,
                 confirmButtonText: 'OKAY',
               })
@@ -53,9 +105,23 @@ onChange = (e) =>
             }
             
           });
+    }else{
+      Swal.fire({
+        icon: 'success',
+        title: 'Invalid User details',
+        showConfirmButton: true,
+        confirmButtonText: 'OKAY',
+      })
+    }
   }
 
+onChange = (e) =>
+        this.setState({ [e.target.name]: e.target.value });
+
+  
+
   render(){
+    const {errors} = this.state;
     return (
       <div>
         <Navigation/>
@@ -63,44 +129,54 @@ onChange = (e) =>
       <Header title="Create Account" />
       <div className="form">
       <div className="row mb-3">
-          <label className="col-sm-4 col-form-label">First Name</label>
+          <label htmlFor="firstName" className="col-sm-4 col-form-label">First Name</label>
           <div className="col-sm-8">
-              <input type="text" className="form-control" name="firstName" value={this.state.firstName} onChange={this.onChange}/>
+              <input type="text" className="form-control" name="firstName" value={this.state.firstName} onChange={this.handleChange} noValidate/>
+              {errors.firstName.length > 0 && 
+                <span className='error'>{errors.firstName}</span>}
           </div>
        </div>
 
        <div className="row mb-3">
-          <label className="col-sm-4 col-form-label">Last Name</label>
+          <label htmlFor="lastName" className="col-sm-4 col-form-label">Last Name</label>
           <div className="col-sm-8">
-              <input type="text" className="form-control" name="lastName" value={this.state.lastName} onChange={this.onChange}/>
+              <input type="text" className="form-control" name="lastName" value={this.state.lastName} onChange={this.handleChange} noValidate/>
+              {errors.lastName.length > 0 && 
+                <span className='error'>{errors.lastName}</span>}
           </div>
        </div>
 
        <div class="row mb-3">
-          <label className="col-sm-4 col-form-label">Email</label>
+          <label htmlFor="email" className="col-sm-4 col-form-label">Email</label>
+          
           <div className="col-sm-8">
-              <input type="email" className="form-control" name="email" value={this.state.email} onChange={this.onChange}/>
+              <input type="email" className="form-control" name="email" value={this.state.email} onChange={this.handleChange} noValidate/>
+              {errors.email.length > 0 && 
+                <span className='error'>{errors.email}</span>}
           </div>
        </div>
 
        <div className="row mb-3">
-          <label className="col-sm-4 col-form-label">Password</label>
+          <label htmlfor="password"className="col-sm-4 col-form-label">Password</label>
+          
           <div className="col-sm-8">
-              <input type="password" className="form-control" name="password" value={this.state.password} onChange={this.onChange}/>
+              <input type="password" className="form-control" name="password" value={this.state.password} onChange={this.handleChange} noValidate/>
+              {errors.password.length > 0 && 
+                <span className='error'>{errors.password}</span>}
           </div>
        </div>
 
        <div className="row mb-3">
           <label className="col-sm-4 col-form-label">Phone</label>
           <div className="col-sm-8">
-              <input type="text" className="form-control" name="phone" value={this.state.phone} onChange={this.onChange}/>
+              <input type="text" className="form-control" name="phone" value={this.state.phone} onChange={this.onChange} />
           </div>
        </div>
         <div className="mb-3">
         <div className="float-start"><br></br>
             Existing User? <Link to="/login">Login here</Link>
           </div>
-          <button className="btn-hover color-9 float-end" onClick={this.registerUser}>
+          <button className="btn-hover color-9 float-end" onClick={this.handleSubmit}>
             Register
           </button>
           <br></br>
