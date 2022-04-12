@@ -31,6 +31,7 @@ class CreateAccountScreen extends Component {
         lastName : '',
         email: '',
         password: '',
+        phone: '',
       }
   }
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -66,6 +67,12 @@ handleChange = (event) => {
       errors.password = 
         value.length < 8
           ? 'Password must be at least 8 characters long!'
+          : '';
+      break;
+      case 'phone': 
+      errors.phone = 
+        value.length < 10
+          ? 'Phone number must be at least 10 characters long!'
           : '';
       break;
     default:
@@ -167,9 +174,11 @@ onChange = (e) =>
        </div>
 
        <div className="row mb-3">
-          <label className="col-sm-4 col-form-label">Phone</label>
+          <label htmlFor="phone" className="col-sm-4 col-form-label">Phone</label>
           <div className="col-sm-8">
-              <input type="text" className="form-control" name="phone" value={this.state.phone} onChange={this.onChange} />
+              <input type="text" className="form-control" name="phone" value={this.state.phone} onChange={this.handleChange} noValidate/> 
+              {errors.phone.length > 0 && 
+                <span className='error'>{errors.phone}</span>}
           </div>
        </div>
         <div className="mb-3">

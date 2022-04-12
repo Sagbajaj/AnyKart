@@ -3,6 +3,15 @@ import ApiCustomerService from "../../services/customer/ApiCustomerService";
 import Navigation from "../../components/Navigation";
 import Swal from 'sweetalert2';
 import { send } from 'emailjs-com';
+import { validate } from 'email-validator';
+const validDate = RegExp(
+    /^(0[1-9]|1[0-2])\/\d{2}$/);
+
+const validateForm = errors => {
+        let valid = true;
+        Object.values(errors).forEach(val => val.length >= 0 && (valid = false));
+        return valid;
+      };
 class PaymentScreen extends Component {
 
     constructor(props) {
@@ -12,9 +21,9 @@ class PaymentScreen extends Component {
           message: '',
           errors: {
             cardNumber : '',
-            CVV : '',
+            cvv : '',
             expiryDate: '',
-            password: '',
+            cardHolderName: ''
           }
       }
         this.payment = this.payment.bind(this);
@@ -24,7 +33,65 @@ class PaymentScreen extends Component {
         this.selectCredit = this.selectCredit.bind(this); 
         this.selectDebit = this.selectDebit.bind(this);
         this.addOrderIdtoOrderAddress = this.addOrderIdtoOrderAddress.bind(this);
+        this.handleChange=this.handleChange.bind(this)
+        // this.handleSubmit = this.handleSubmit.bind(this)
     }
+
+    handleChange = (event) => {
+        event.preventDefault();
+        const { name, value } = event.target;
+        
+        let errors = this.state.errors;
+      
+        switch (name) {
+          case 'cardNumber': 
+            errors.cardNumber = 
+              value.length < 16
+                ? 'Card Number must be at least 16 numbers long!'
+                : '';
+            break;
+            case 'cvv': 
+            errors.cvv = 
+              value.length < 3 
+                ? 'Please Enter valid C V V'
+                : '';
+            break;
+          case 'expiryDate':
+            errors.expiryDate = 
+              validDate.test(value)
+                ? ''
+                : 'Please Enter correct Expiry date';
+            break;
+          case 'cardHolderName': 
+            errors.cardHolderName = 
+              value.length < 4
+                ? 'Name must be at least 4 characters long!'
+                : '';
+            break;
+            
+          default:
+            break;
+        }
+      
+        this.setState({errors, [name]: value}) ;
+      }
+    
+    //   handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     if (validateForm(this.state.errors)) {
+    //         this.payment();
+            
+    //     }else
+    //     {
+    //         Swal.fire({
+    //             icon: 'success',
+    //             title: 'Please fill all the details',
+    //             showConfirmButton: true,
+    //             confirmButtonText: 'OKAY',
+    //           })
+    //           console.info('Invalid Form')
+    //     }
+    // }
 
     onChange = (e) =>
         this.setState({ [e.target.name]: e.target.value });
@@ -89,7 +156,13 @@ class PaymentScreen extends Component {
         )
             .then((response) => {
                 console.log('SUCCESS!', response.status, response.text);
-                alert('Mail Send Sucessfully!!')
+               //alert('Mail Send Sucessfully!!')
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Mail Send Sucessfully!!',
+                    showConfirmButton: true,
+                    confirmButtonText: 'OKAY',
+                  })
             })
             .catch((err) => {
                 console.log('FAILED...', err);
@@ -97,6 +170,8 @@ class PaymentScreen extends Component {
 
     }
     payment() {
+        if (validateForm(this.state.errors)) {
+            console.info('Valid Form')
         this.addOrder();
        // alert('Payment Done')
        this.onMail();
@@ -119,9 +194,19 @@ class PaymentScreen extends Component {
         this.props.history.push('/home');
     }
 
+else{
+    Swal.fire({
+        icon: 'success',
+        title: 'Please fill all the details',
+        showConfirmButton: true,
+        confirmButtonText: 'OKAY',
+      }) 
+      this.props.history.push('/payment');
+}
+    }
     render () {
+        const {errors} = this.state;
         return (
-            
             <div>
                 <Navigation/>
                 <div className="payment">
@@ -150,16 +235,28 @@ class PaymentScreen extends Component {
                                 </div>
                                 <form>
                                     <div className="form-group">
-                                        <label>Card Number</label>
-                                        <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Card Number" name="cardNumber" required='true' />
+                                        <label htmlFor='cardNumber'>Card Number</label>
+                                        <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="card Number" onChange={this.handleChange} placeholder="Enter Card Number" name="cardNumber" noValidate />
+                                        {errors.cardNumber.length > 0 && 
+                                        <span className='error'>{errors.cardNumber}</span>}
                                     </div>
                                     <div className="form-group">
-                                        <label>CVV</label>
-                                        <input type="text" className="form-control" id="exampleInputPassword1" placeholder="Enter CVV" name="cvv" required='true' />
+                                        <label htmlFor='cardHolderName'>Card Holder Name</label>
+                                        <input type="text" className="form-control" id="exampleInputName" aria-describedby="Name" onChange={this.handleChange} placeholder="Enter Card Holder Name" name="cardHolderName" noValidate />
+                                        {errors.cardHolderName.length > 0 && 
+                                        <span className='error'>{errors.cardHolderName}</span>}
                                     </div>
                                     <div className="form-group">
-                                        <label>Expiry Date</label>
-                                        <input type="text" className="form-control" id="exampleInputPassword1" placeholder="Enter Expiry Date" name="expiryDate" required='true' />
+                                        <label htmlFor='cvv'>CVV</label>
+                                        <input type="text" className="form-control" id="exampleInputPassword1" placeholder="Enter CVV" onChange={this.handleChange} name="cvv" required='true' noValidate/>
+                                        {errors.cvv.length > 0 && 
+                                        <span className='error'>{errors.cvv}</span>}  
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor='expiryDate'>Expiry Date</label>
+                                        <input type="text" className="form-control" id="exampleInputExpiry" placeholder="Enter Expiry Date" onChange={this.handleChange} name="expiryDate" required='true' noValidate/>
+                                        {errors.expiryDate.length > 0 && 
+                                        <span className='error'>{errors.expiryDate}</span>}
                                     </div>
                                 </form>
                          </div>     
