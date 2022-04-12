@@ -34,13 +34,19 @@ onChange = (e) =>
             if(res.data.result === null){
              // alert("Email Addreess Already Registered")
               Swal.fire({
-                icon: 'success',
+                icon: 'error',
                 title: 'Email Address Already Registered',
                 showConfirmButton: true,
                 confirmButtonText: 'OKAY',
               })
             }
             if(res.data.result !== null){
+              Swal.fire({
+                icon: 'success',
+                title: 'Supplier Added Successfully',
+                showConfirmButton: true,
+                confirmButtonText: 'OKAY',
+              })
               this.setState({message : 'Supplier Add successfully.'});
               this.props.history.push('/addaddress/'+res.data.result);
             }

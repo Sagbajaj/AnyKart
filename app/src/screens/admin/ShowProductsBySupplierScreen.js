@@ -47,6 +47,15 @@ export default class ShowProductsBySupplierScreen extends Component {
               })
               ApiSupplierService.deleteProduct(productId)
             }
+            else{
+                Swal.fire({
+                    icon : 'error',
+                    title : 'Cancelled',
+                    text : 'Your file is safe',
+                    showConfirmButton: true,
+                    confirmButtonText: 'OKAY',
+                })
+            }
           })
         
         .then((res) => {

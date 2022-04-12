@@ -85,7 +85,7 @@ class CartScreen extends Component{
         if(size == 0){
             //alert(" !!! Cart Is Empty !!!")
             Swal.fire({
-                icon: 'success',
+                icon: 'error',
                 title: '!!! Cart Is Empty !!!',
                 showConfirmButton: true,
                 confirmButtonText: 'OKAY',
@@ -96,7 +96,7 @@ class CartScreen extends Component{
             if(this.state.st && window.localStorage.getItem("addressStatus") == 'false'){
               //  alert(" !!! Enter Valid Address !!!")
                 Swal.fire({
-                    icon: 'success',
+                    icon: 'error',
                     title: '!!! Enter Valid Address !!!',
                     showConfirmButton: true,
                     confirmButtonText: 'OKAY',
@@ -119,7 +119,7 @@ class CartScreen extends Component{
         if(size == 0){
            // alert(" !!! Cart Is Empty !!!")
             Swal.fire({
-                icon: 'success',
+                icon: 'error',
                 title: '!!! Cart Is Empty !!!',
                 showConfirmButton: true,
                 confirmButtonText: 'OKAY',
@@ -146,18 +146,24 @@ class CartScreen extends Component{
               Swal.fire({
                 icon : 'success',
                 title : 'Deleted!',
-                text : 'Your file has been deleted.',
+                text : 'product has been deleted. from cart',
                 showConfirmButton: true,
                 confirmButtonText: 'OKAY',
               })
               ApiCustomerService.deleteCartByUserId(cartId)
+              window.location.reload();
+            JSON.stringify(window.localStorage.setItem("cart_size", JSON.parse(window.localStorage.getItem("cart_size")) - qty));
             }
-          })
-        
-        .then((res) => {
-            window.location.reload();
-            JSON.stringify(window.localStorage.setItem("cart_size", JSON.parse(window.localStorage.getItem("cart_size")) - qty));        
-        });
+            else{
+                Swal.fire({
+                    icon : 'error',
+                    title : 'Cancelled',
+                    text : 'product not removed from cart',
+                    showConfirmButton: true,
+                    confirmButtonText: 'OKAY',
+                  })
+            }
+          });
        
     }
 

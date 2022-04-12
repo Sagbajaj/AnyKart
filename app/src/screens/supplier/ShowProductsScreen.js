@@ -71,11 +71,20 @@ export default class ShowProductsScreen extends Component {
               Swal.fire({
                 icon : 'success',
                 title : 'Deleted!',
-                text : 'Your file has been deleted.',
+                text : 'product has been deleted.',
                 showConfirmButton: true,
                 confirmButtonText: 'OKAY',
               })
               ApiSupplierService.deleteProduct(productId)
+            }
+            else{
+                Swal.fire({
+                    icon : 'error',
+                    title : 'Cancelled',
+                    text : 'No changes made',
+                    showConfirmButton: true,
+                    confirmButtonText: 'OKAY',
+                })
             }
           })
         

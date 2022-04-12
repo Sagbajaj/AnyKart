@@ -69,7 +69,7 @@ export default class AddProductFromSupplierScreen extends Component {
             .then(res => {
                 Swal.fire({
                     icon: 'success',
-                    title: 'Product Added Successfully',
+                    title: 'Product Deleted Successfully',
                     showConfirmButton: true,
                     confirmButtonText: 'OKAY',
                   })

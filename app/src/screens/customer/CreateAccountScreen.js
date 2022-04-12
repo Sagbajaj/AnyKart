@@ -92,7 +92,7 @@ handleChange = (event) => {
             if(res.data.result === null){
             //  alert("Email Addreess Already Registered")
               Swal.fire({
-                icon: 'success',
+                icon: 'errpr',
                 title: 'Email Address Already Registered',
                 showConfirmButton: true,
                 confirmButtonText: 'OKAY',
@@ -114,7 +114,7 @@ handleChange = (event) => {
           });
     }else{
       Swal.fire({
-        icon: 'success',
+        icon: 'error',
         title: 'Invalid User details',
         showConfirmButton: true,
         confirmButtonText: 'OKAY',

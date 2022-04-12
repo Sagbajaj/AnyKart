@@ -75,6 +75,15 @@ class DeliveryBoyListScreen extends Component{
               })
               ApiCustomerService.deleteDelBoy(id)
             }
+            else{
+                Swal.fire({
+                    icon : 'error',
+                    title : 'Cancelled',
+                    text : 'Your file is safe',
+                    showConfirmButton: true,
+                    confirmButtonText: 'OKAY',
+                })
+            }
           })
         
         .then((res) => {

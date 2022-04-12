@@ -196,7 +196,7 @@ class PaymentScreen extends Component {
 
 else{
     Swal.fire({
-        icon: 'success',
+        icon: 'error',
         title: 'Please fill all the details',
         showConfirmButton: true,
         confirmButtonText: 'OKAY',

@@ -72,11 +72,20 @@ class SupplierListScreen extends Component{
               Swal.fire({
                 icon : 'success',
                 title : 'Deleted!',
-                text : 'Your file has been deleted.',
+                text : 'Supplier has been deleted.',
                 showConfirmButton: true,
                 confirmButtonText: 'OKAY',
               })
               ApiCustomerService.deleteSupplier(id)
+            }
+            else{
+                Swal.fire({
+                    icon : 'error',
+                    title : 'Cancelled',
+                    text : 'supplier not deleted',
+                    showConfirmButton: true,
+                    confirmButtonText: 'OKAY',
+                })
             }
           })
         

@@ -33,7 +33,7 @@ onChange = (e) =>
           .then(res => {
             if(res.data.result === null){
               Swal.fire({
-                icon: 'success',
+                icon: 'error',
                 title: 'Email Address Already Registered',
                 showConfirmButton: true,
                 confirmButtonText: 'OKAY',
