@@ -14,7 +14,9 @@ class CartScreen extends Component{
         tamt : 0,
         samt : 0,
         sts:'Cart Is Empty',
+        
       }
+      
         this.getStatus = this.getStatus.bind(this);
         this.placeOrder = this.placeOrder.bind(this);
         this.deleteProduct = this.deleteProduct.bind(this);

@@ -9,7 +9,13 @@ class PaymentScreen extends Component {
         super(props)
         this.state ={
             paymentInfo: '',
-          message: ''
+          message: '',
+          errors: {
+            cardNumber : '',
+            CVV : '',
+            expiryDate: '',
+            password: '',
+          }
       }
         this.payment = this.payment.bind(this);
         this.addOrder = this.addOrder.bind(this);
