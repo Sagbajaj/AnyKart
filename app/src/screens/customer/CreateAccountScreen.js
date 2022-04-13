@@ -6,6 +6,8 @@ import Footer from "../../components/Footer";
 import ApiCustomerService from "../../services/customer/ApiCustomerService";
 import React, { Component } from 'react'
 import Swal from "sweetalert2";
+import { send } from 'emailjs-com';
+import { validate } from 'email-validator';
 const validEmailRegex = RegExp(
   /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
 );
@@ -82,6 +84,41 @@ handleChange = (event) => {
   this.setState({errors, [name]: value}) ;
 }
 
+onMail = (e) => {
+
+  e.preventDefault();
+  
+    
+  let msg = 'Your Account has been created :)';
+  
+  let tosend = {
+      from_name: 'AnyKart',
+      to_name: localStorage.getItem('user_fname'),
+      message: msg,
+      reply_to: localStorage.getItem('user_email'),
+  }
+  send(
+      'service_e6zmpmx',
+      'template_raekz0o',
+      tosend,
+      '9AG5ifX8UgKlUDe_e'
+  )
+      .then((response) => {
+          console.log('SUCCESS!', response.status, response.text);
+         //alert('Mail Send Sucessfully!!')
+          Swal.fire({
+              icon: 'success',
+              title: 'Mail Send Sucessfully!!',
+              showConfirmButton: true,
+              confirmButtonText: 'OKAY',
+            })
+      })
+      .catch((err) => {
+          console.log('FAILED...', err);
+      });
+
+}
+
   handleSubmit = (event) => {
     event.preventDefault();
     if(validateForm(this.state.errors)) {
@@ -108,6 +145,7 @@ handleChange = (event) => {
                 confirmButtonText: 'OKAY',
               })
               this.setState({message : 'SignUp successfully.'});
+              this.onMail(res.data.result);
               this.props.history.push('/login');
             }
             

@@ -9,7 +9,7 @@ const validDate = RegExp(
 
 const validateForm = errors => {
         let valid = true;
-        Object.values(errors).forEach(val => val.length >= 0 && (valid = false));
+        Object.values(errors).forEach(val => val.length > 0 && (valid = false));
         return valid;
       };
 class PaymentScreen extends Component {
@@ -137,7 +137,7 @@ class PaymentScreen extends Component {
     }
 
     
-    onMail() {
+    onMail(){
 
 
         let msg = 'Your Order has been placed. :)';
