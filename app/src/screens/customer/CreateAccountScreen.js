@@ -84,18 +84,18 @@ handleChange = (event) => {
   this.setState({errors, [name]: value}) ;
 }
 
-onMail = (e) => {
+onMail () {
 
-  e.preventDefault();
+  const { firstName, lastName, email} = this.state;
   
     
   let msg = 'Your Account has been created :)';
   
   let tosend = {
       from_name: 'AnyKart',
-      to_name: localStorage.getItem('user_fname'),
+      to_name: firstName + ' ' + lastName,
       message: msg,
-      reply_to: localStorage.getItem('user_email'),
+      to_email: email,
   }
   send(
       'service_e6zmpmx',
@@ -129,7 +129,7 @@ onMail = (e) => {
             if(res.data.result === null){
             //  alert("Email Addreess Already Registered")
               Swal.fire({
-                icon: 'errpr',
+                icon: 'error',
                 title: 'Email Address Already Registered',
                 showConfirmButton: true,
                 confirmButtonText: 'OKAY',
@@ -144,8 +144,9 @@ onMail = (e) => {
                 showConfirmButton: true,
                 confirmButtonText: 'OKAY',
               })
+              this.onMail(user);
               this.setState({message : 'SignUp successfully.'});
-              this.onMail(res.data.result);
+
               this.props.history.push('/login');
             }
             
@@ -158,6 +159,7 @@ onMail = (e) => {
         confirmButtonText: 'OKAY',
       })
     }
+    
   }
 
 onChange = (e) =>

@@ -74,6 +74,7 @@ class DeliveryBoyListScreen extends Component{
                 confirmButtonText: 'OKAY',
               })
               ApiCustomerService.deleteDelBoy(id)
+              window.location.reload()
             }
             else{
                 Swal.fire({
@@ -84,11 +85,8 @@ class DeliveryBoyListScreen extends Component{
                     confirmButtonText: 'OKAY',
                 })
             }
-          })
-        
-        .then((res) => {
-           window.location.reload();
-        });
+          });
+       
     }
 
 

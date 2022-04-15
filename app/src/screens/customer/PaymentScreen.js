@@ -53,7 +53,7 @@ class PaymentScreen extends Component {
             case 'cvv': 
             errors.cvv = 
               value.length < 3 
-                ? 'Please Enter valid C V V'
+                ? 'Please Enter valid CVV'
                 : '';
             break;
           case 'expiryDate':

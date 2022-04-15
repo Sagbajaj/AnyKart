@@ -77,6 +77,7 @@ class SupplierListScreen extends Component{
                 confirmButtonText: 'OKAY',
               })
               ApiCustomerService.deleteSupplier(id)
+              window.location.reload();
             }
             else{
                 Swal.fire({
@@ -89,9 +90,7 @@ class SupplierListScreen extends Component{
             }
           })
         
-        .then((res) => {
-           window.location.reload();
-        });
+        
     }
 
     render() {

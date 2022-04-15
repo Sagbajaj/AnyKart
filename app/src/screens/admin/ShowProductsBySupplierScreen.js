@@ -37,7 +37,7 @@ export default class ShowProductsBySupplierScreen extends Component {
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
-            if (result.isConfirmed) {
+            if(result.isConfirmed) {
               Swal.fire({
                 icon : 'success',
                 title : 'Deleted!',
@@ -46,6 +46,7 @@ export default class ShowProductsBySupplierScreen extends Component {
                 confirmButtonText: 'OKAY',
               })
               ApiSupplierService.deleteProduct(productId)
+              window.location.reload();
             }
             else{
                 Swal.fire({
@@ -57,11 +58,6 @@ export default class ShowProductsBySupplierScreen extends Component {
                 })
             }
           })
-        
-        .then((res) => {
-            window.location.reload();       
-        });
-       
     }
 
     render(){
