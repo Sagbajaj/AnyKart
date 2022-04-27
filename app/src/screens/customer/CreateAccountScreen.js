@@ -126,11 +126,11 @@ onMail () {
       console.info('Valid Form')
       ApiCustomerService.addUser(user)
           .then(res => {
-            if(res.data.result === null){
+            if(res.data.result.email === null &&res.data.result.phone === null){
             //  alert("Email Addreess Already Registered")
               Swal.fire({
                 icon: 'error',
-                title: 'Email Address Already Registered',
+                title: 'Email Address or Phone no. Already Registered',
                 showConfirmButton: true,
                 confirmButtonText: 'OKAY',
               })
